@@ -814,8 +814,34 @@ to go ; one turn = one run of this function "go"
       set t-homozygous-viability t-homozygous-viability-tmp
     ]
     [
-      fill-in-turtles 1000 100 1
+      ifelse(switch-turtles = TRUE)
+      [
+        ask n-of (round ((count turtles) / 2)) turtles
+       [
 
+        set t-status 1
+
+
+        set t-dispersal-modifier w2-dispersal-modifier
+        set t-dispersal-density-threshold w2-dispersal-density-threshold
+        set t-dispersal-density-threshold-2 w2-dispersal-density-threshold-2
+        set t-dispersal-density-threshold-3 w2-dispersal-density-threshold-3
+
+        set w2-dispersal-modifier "NA"
+        set w2-dispersal-density-threshold "NA"
+        set w2-dispersal-density-threshold-2 "NA"
+        set w2-dispersal-density-threshold-3 "NA"
+
+        set t2-dispersal-modifier "NA"
+        set t2-dispersal-density-threshold "NA"
+        set t2-dispersal-density-threshold-2 "NA"
+        set t2-dispersal-density-threshold-3 "NA"
+
+        ]
+      ]
+      [
+        fill-in-turtles 1000 100 1
+      ]
     ]
   set end-with-t? true
   ]
@@ -5369,7 +5395,7 @@ t-starting-frequency
 t-starting-frequency
 1
 100
-100.0
+1.0
 1
 1
 NIL
@@ -5412,7 +5438,7 @@ SWITCH
 462
 end-with-t?
 end-with-t?
-1
+0
 1
 -1000
 
@@ -6675,7 +6701,7 @@ t-homozygous-viability
 t-homozygous-viability
 0
 1.0
-1.0
+0.0
 0.001
 1
 NIL
@@ -6960,7 +6986,7 @@ INPUTBOX
 454
 937
 ticks-when-t-comes-in
-100000.0
+1000.0
 1
 0
 Number
@@ -7055,7 +7081,7 @@ SWITCH
 907
 start_with_mutation
 start_with_mutation
-1
+0
 1
 -1000
 
@@ -7165,6 +7191,17 @@ SWITCH
 763
 reverse-who-comes-in
 reverse-who-comes-in
+1
+1
+-1000
+
+SWITCH
+459
+348
+613
+381
+switch-turtles
+switch-turtles
 0
 1
 -1000
@@ -56307,7 +56344,7 @@ NetLogo 6.1.1
       <value value="true"/>
     </enumeratedValueSet>
   </experiment>
-  <experiment name="3.7.0-2linloci-1M-NatCond-Heterogeneity" repetitions="100" sequentialRunOrder="false" runMetricsEveryStep="false">
+  <experiment name="3.7.0-2linloci-1M-NatCond-Heterogeneity-LowerAlpha-371comp" repetitions="100" sequentialRunOrder="false" runMetricsEveryStep="false">
     <setup>setup</setup>
     <go>go</go>
     <metric>count-w</metric>
@@ -56536,7 +56573,7 @@ NetLogo 6.1.1
       <value value="true"/>
     </enumeratedValueSet>
     <enumeratedValueSet variable="approach-alpha">
-      <value value="0.025"/>
+      <value value="0.02"/>
     </enumeratedValueSet>
     <enumeratedValueSet variable="mate-death-prob">
       <value value="0"/>
@@ -56593,7 +56630,7 @@ NetLogo 6.1.1
       <value value="true"/>
     </enumeratedValueSet>
     <enumeratedValueSet variable="file-location">
-      <value value="&quot;/moto/ziab/users/jr3950/data/ABM/3.7.0-2linloci-1M-NatCond-Heterogeneity/&quot;"/>
+      <value value="&quot;/moto/ziab/users/jr3950/data/ABM/3.7.0-2linloci-1M-NatCond-Heterogeneity-LowerAlpha-371comp/&quot;"/>
     </enumeratedValueSet>
     <enumeratedValueSet variable="patch-density-min">
       <value value="1"/>
@@ -56674,6 +56711,9 @@ NetLogo 6.1.1
     </enumeratedValueSet>
     <enumeratedValueSet variable="update-males-after-every-female">
       <value value="true"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="reverse-who-comes-in">
+      <value value="false"/>
     </enumeratedValueSet>
   </experiment>
   <experiment name="3.7.0-1linloci-100K-VarDriveVarTau" repetitions="100" sequentialRunOrder="false" runMetricsEveryStep="false">
@@ -61829,6 +61869,11170 @@ NetLogo 6.1.1
     </enumeratedValueSet>
     <enumeratedValueSet variable="reverse-who-comes-in">
       <value value="false"/>
+    </enumeratedValueSet>
+  </experiment>
+  <experiment name="3.7.0-2linloci-1M-VarTauVarAlpha-LowerAlpha-371comp" repetitions="100" sequentialRunOrder="false" runMetricsEveryStep="false">
+    <setup>setup</setup>
+    <go>go</go>
+    <metric>count-w</metric>
+    <metric>count-t</metric>
+    <metric>count-tt</metric>
+    <metric>count-w + count-t + count-tt</metric>
+    <enumeratedValueSet variable="min-pxcor">
+      <value value="-5"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="min-pycor">
+      <value value="-5"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="max-pxcor">
+      <value value="4"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="max-pycor">
+      <value value="4"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="matings-report">
+      <value value="true"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="do-report-local-densities">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="dispersal-dd-evolver-2">
+      <value value="5"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="P_inc_set">
+      <value value="1"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="report-geno">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="random-patch-density">
+      <value value="true"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="t-homozygous-viability">
+      <value value="0"/>
+      <value value="0.25"/>
+      <value value="0.5"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="evolution-report">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="dispersal-mod-evolver-start">
+      <value value="0.5"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="version">
+      <value value="3"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="t-starting-frequency">
+      <value value="1"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="evolve-dispersal-density-dependance-2">
+      <value value="true"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="max-ticks">
+      <value value="1000000"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="geno-ids-print-interval">
+      <value value="10000"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="dispersal-dd-evolver-start">
+      <value value="0"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="random-density-immunity">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="new-formula">
+      <value value="true"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="new-wander">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="wander-sex-radius">
+      <value value="1"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="evolve-dispersal-density-dependance">
+      <value value="true"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="perc-mm3">
+      <value value="1"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="t-homozygous-lethality">
+      <value value="1"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="evolution-rate-max">
+      <value value="1000"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="patch-fidelity">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="dispersal-dd-evolver">
+      <value value="1"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="shuffle-patches-timing">
+      <value value="1"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="new-dispersal">
+      <value value="true"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="more-mice-in-pest">
+      <value value="50"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="shuffle-patches">
+      <value value="true"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="new-density-dependent-dispersal">
+      <value value="true"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="dispersal-prob-t">
+      <value value="1"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="new_death_a">
+      <value value="3"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="P_full_set">
+      <value value="0.001"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="density-fecundity-strength">
+      <value value="1"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="min-matings">
+      <value value="0"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="fecundity-random">
+      <value value="0"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="max-turtles-total">
+      <value value="0"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="only-juvenile-dispersal">
+      <value value="true"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="new_death_c">
+      <value value="1"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="evolve-dispersal">
+      <value value="true"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="limit-perc-mm3-mice">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="fecundity-global">
+      <value value="6"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="dispersal-cost">
+      <value value="0.3"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="t-effect">
+      <value value="&quot;dominant&quot;"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="death-radius">
+      <value value="1"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="drive">
+      <value value="0.9"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="evolution-rate-min">
+      <value value="5"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="cc-mean">
+      <value value="50"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="d-formula-start">
+      <value value="0"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="end-with-t?">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="cc-sd">
+      <value value="15"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="t-w-reporting">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="max-matings">
+      <value value="3"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="dispersal-dd-evolver-3">
+      <value value="150"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="P_evo_decrease">
+      <value value="true"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="mortality-report">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="report-litters">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="when-to-disperse">
+      <value value="0"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="old-wander-extra-wander-chance">
+      <value value="0.5"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="interval-report-local-densities">
+      <value value="100"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="dispersal-prob-w">
+      <value value="1"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="extended-disadvantage-adaptation">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="patch-density-randomness">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="new-wander-chance">
+      <value value="15"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="matings-alpha">
+      <value value="0"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="pest-chance">
+      <value value="0"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="patch-density-max">
+      <value value="10"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="density-death">
+      <value value="true"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="approach-alpha">
+      <value value="0.01"/>
+      <value value="0.02"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="mate-death-prob">
+      <value value="0"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="track-migration">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="mate-radius">
+      <value value="1"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="disp-wander-times">
+      <value value="5"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="new-death">
+      <value value="true"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="mating-prob">
+      <value value="1"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="starting-number">
+      <value value="5000"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="loci">
+      <value value="2"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="random-min-matings">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="new_death_b">
+      <value value="15"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="death-prob">
+      <value value="0.25"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="report-litters-ticks">
+      <value value="100"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="cluster-patch-densities">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="new_death_d">
+      <value value="5"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="density-fecundity">
+      <value value="true"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="dispersal-mod-evolver">
+      <value value="1"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="smart-report-geno">
+      <value value="true"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="patches-report">
+      <value value="true"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="file-location">
+      <value value="&quot;/moto/ziab/users/jr3950/data/ABM/3.7.0-2linloci-1M-VarTauVarAlpha-LowerAlpha-371comp/&quot;"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="patch-density-min">
+      <value value="1"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="density-death-prob">
+      <value value="10"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="P_full_exists">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="density-radius">
+      <value value="3"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="w-advantage">
+      <value value="0.85"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="report-migration-ticks">
+      <value value="100"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="pest-patch-lasting">
+      <value value="50"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="only_phenotypic_range">
+      <value value="true"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="density-evolver-max-turtles">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="dispersal-density-updated-after-each-dispersal">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="linear-formula-dispersal">
+      <value value="true"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="ticks-when-t-comes-in">
+      <value value="100000"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="negative-binomial-approach">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="cc-sd-incr">
+      <value value="15"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="incremental-shuffle">
+      <value value="true"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="kill_t_above">
+      <value value="1"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="start_with_mutation">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="logit_disp_prob">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="d0-dividedby">
+      <value value="1000"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="d1-dividedby">
+      <value value="50000"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="P_inc_final">
+      <value value="0.001"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="P_inc_random">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="t-homozygous-fertile">
+      <value value="true"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="ptclassic">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="update-males-after-every-female">
+      <value value="true"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="reverse-who-comes-in">
+      <value value="false"/>
+    </enumeratedValueSet>
+  </experiment>
+  <experiment name="3.7.0-2linloci-1M-VarTauVarAlpha-2-LowerAlpha-371comp" repetitions="100" sequentialRunOrder="false" runMetricsEveryStep="false">
+    <setup>setup</setup>
+    <go>go</go>
+    <metric>count-w</metric>
+    <metric>count-t</metric>
+    <metric>count-tt</metric>
+    <metric>count-w + count-t + count-tt</metric>
+    <enumeratedValueSet variable="min-pxcor">
+      <value value="-5"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="min-pycor">
+      <value value="-5"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="max-pxcor">
+      <value value="4"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="max-pycor">
+      <value value="4"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="matings-report">
+      <value value="true"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="do-report-local-densities">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="dispersal-dd-evolver-2">
+      <value value="5"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="P_inc_set">
+      <value value="1"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="report-geno">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="random-patch-density">
+      <value value="true"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="t-homozygous-viability">
+      <value value="0"/>
+      <value value="0.25"/>
+      <value value="0.5"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="evolution-report">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="dispersal-mod-evolver-start">
+      <value value="0.5"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="version">
+      <value value="3"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="t-starting-frequency">
+      <value value="1"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="evolve-dispersal-density-dependance-2">
+      <value value="true"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="max-ticks">
+      <value value="1000000"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="geno-ids-print-interval">
+      <value value="10000"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="dispersal-dd-evolver-start">
+      <value value="0"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="random-density-immunity">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="new-formula">
+      <value value="true"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="new-wander">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="wander-sex-radius">
+      <value value="1"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="evolve-dispersal-density-dependance">
+      <value value="true"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="perc-mm3">
+      <value value="1"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="t-homozygous-lethality">
+      <value value="1"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="evolution-rate-max">
+      <value value="1000"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="patch-fidelity">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="dispersal-dd-evolver">
+      <value value="1"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="shuffle-patches-timing">
+      <value value="1"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="new-dispersal">
+      <value value="true"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="more-mice-in-pest">
+      <value value="50"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="shuffle-patches">
+      <value value="true"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="new-density-dependent-dispersal">
+      <value value="true"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="dispersal-prob-t">
+      <value value="1"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="new_death_a">
+      <value value="3"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="P_full_set">
+      <value value="0.001"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="density-fecundity-strength">
+      <value value="1"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="min-matings">
+      <value value="0"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="fecundity-random">
+      <value value="0"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="max-turtles-total">
+      <value value="0"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="only-juvenile-dispersal">
+      <value value="true"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="new_death_c">
+      <value value="1"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="evolve-dispersal">
+      <value value="true"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="limit-perc-mm3-mice">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="fecundity-global">
+      <value value="6"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="dispersal-cost">
+      <value value="0.3"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="t-effect">
+      <value value="&quot;dominant&quot;"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="death-radius">
+      <value value="1"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="drive">
+      <value value="0.9"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="evolution-rate-min">
+      <value value="5"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="cc-mean">
+      <value value="50"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="d-formula-start">
+      <value value="0"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="end-with-t?">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="cc-sd">
+      <value value="15"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="t-w-reporting">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="max-matings">
+      <value value="3"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="dispersal-dd-evolver-3">
+      <value value="150"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="P_evo_decrease">
+      <value value="true"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="mortality-report">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="report-litters">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="when-to-disperse">
+      <value value="0"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="old-wander-extra-wander-chance">
+      <value value="0.5"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="interval-report-local-densities">
+      <value value="100"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="dispersal-prob-w">
+      <value value="1"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="extended-disadvantage-adaptation">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="patch-density-randomness">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="new-wander-chance">
+      <value value="15"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="matings-alpha">
+      <value value="0"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="pest-chance">
+      <value value="0"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="patch-density-max">
+      <value value="10"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="density-death">
+      <value value="true"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="approach-alpha">
+      <value value="0.01"/>
+      <value value="0.02"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="mate-death-prob">
+      <value value="0"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="track-migration">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="mate-radius">
+      <value value="1"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="disp-wander-times">
+      <value value="5"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="new-death">
+      <value value="true"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="mating-prob">
+      <value value="1"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="starting-number">
+      <value value="5000"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="loci">
+      <value value="2"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="random-min-matings">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="new_death_b">
+      <value value="15"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="death-prob">
+      <value value="0.25"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="report-litters-ticks">
+      <value value="100"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="cluster-patch-densities">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="new_death_d">
+      <value value="5"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="density-fecundity">
+      <value value="true"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="dispersal-mod-evolver">
+      <value value="1"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="smart-report-geno">
+      <value value="true"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="patches-report">
+      <value value="true"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="file-location">
+      <value value="&quot;/moto/ziab/users/jr3950/data/ABM/3.7.0-2linloci-1M-VarTauVarAlpha-2-LowerAlpha-371comp/&quot;"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="patch-density-min">
+      <value value="1"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="density-death-prob">
+      <value value="10"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="P_full_exists">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="density-radius">
+      <value value="3"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="w-advantage">
+      <value value="0.85"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="report-migration-ticks">
+      <value value="100"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="pest-patch-lasting">
+      <value value="50"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="only_phenotypic_range">
+      <value value="true"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="density-evolver-max-turtles">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="dispersal-density-updated-after-each-dispersal">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="linear-formula-dispersal">
+      <value value="true"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="ticks-when-t-comes-in">
+      <value value="100000"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="negative-binomial-approach">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="cc-sd-incr">
+      <value value="15"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="incremental-shuffle">
+      <value value="true"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="kill_t_above">
+      <value value="1"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="start_with_mutation">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="logit_disp_prob">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="d0-dividedby">
+      <value value="1000"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="d1-dividedby">
+      <value value="50000"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="P_inc_final">
+      <value value="0.001"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="P_inc_random">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="t-homozygous-fertile">
+      <value value="true"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="ptclassic">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="update-males-after-every-female">
+      <value value="true"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="reverse-who-comes-in">
+      <value value="false"/>
+    </enumeratedValueSet>
+  </experiment>
+  <experiment name="3.7.0-2linloci-1M-VarTauVarAlpha-3-LowerAlpha-371comp" repetitions="100" sequentialRunOrder="false" runMetricsEveryStep="false">
+    <setup>setup</setup>
+    <go>go</go>
+    <metric>count-w</metric>
+    <metric>count-t</metric>
+    <metric>count-tt</metric>
+    <metric>count-w + count-t + count-tt</metric>
+    <enumeratedValueSet variable="min-pxcor">
+      <value value="-5"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="min-pycor">
+      <value value="-5"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="max-pxcor">
+      <value value="4"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="max-pycor">
+      <value value="4"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="matings-report">
+      <value value="true"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="do-report-local-densities">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="dispersal-dd-evolver-2">
+      <value value="5"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="P_inc_set">
+      <value value="1"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="report-geno">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="random-patch-density">
+      <value value="true"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="t-homozygous-viability">
+      <value value="0"/>
+      <value value="0.25"/>
+      <value value="0.5"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="evolution-report">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="dispersal-mod-evolver-start">
+      <value value="0.5"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="version">
+      <value value="3"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="t-starting-frequency">
+      <value value="1"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="evolve-dispersal-density-dependance-2">
+      <value value="true"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="max-ticks">
+      <value value="1000000"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="geno-ids-print-interval">
+      <value value="10000"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="dispersal-dd-evolver-start">
+      <value value="0"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="random-density-immunity">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="new-formula">
+      <value value="true"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="new-wander">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="wander-sex-radius">
+      <value value="1"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="evolve-dispersal-density-dependance">
+      <value value="true"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="perc-mm3">
+      <value value="1"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="t-homozygous-lethality">
+      <value value="1"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="evolution-rate-max">
+      <value value="1000"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="patch-fidelity">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="dispersal-dd-evolver">
+      <value value="1"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="shuffle-patches-timing">
+      <value value="1"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="new-dispersal">
+      <value value="true"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="more-mice-in-pest">
+      <value value="50"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="shuffle-patches">
+      <value value="true"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="new-density-dependent-dispersal">
+      <value value="true"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="dispersal-prob-t">
+      <value value="1"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="new_death_a">
+      <value value="3"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="P_full_set">
+      <value value="0.001"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="density-fecundity-strength">
+      <value value="1"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="min-matings">
+      <value value="0"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="fecundity-random">
+      <value value="0"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="max-turtles-total">
+      <value value="0"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="only-juvenile-dispersal">
+      <value value="true"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="new_death_c">
+      <value value="1"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="evolve-dispersal">
+      <value value="true"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="limit-perc-mm3-mice">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="fecundity-global">
+      <value value="6"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="dispersal-cost">
+      <value value="0.3"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="t-effect">
+      <value value="&quot;dominant&quot;"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="death-radius">
+      <value value="1"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="drive">
+      <value value="0.9"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="evolution-rate-min">
+      <value value="5"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="cc-mean">
+      <value value="50"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="d-formula-start">
+      <value value="0"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="end-with-t?">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="cc-sd">
+      <value value="15"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="t-w-reporting">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="max-matings">
+      <value value="3"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="dispersal-dd-evolver-3">
+      <value value="150"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="P_evo_decrease">
+      <value value="true"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="mortality-report">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="report-litters">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="when-to-disperse">
+      <value value="0"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="old-wander-extra-wander-chance">
+      <value value="0.5"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="interval-report-local-densities">
+      <value value="100"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="dispersal-prob-w">
+      <value value="1"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="extended-disadvantage-adaptation">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="patch-density-randomness">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="new-wander-chance">
+      <value value="15"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="matings-alpha">
+      <value value="0"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="pest-chance">
+      <value value="0"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="patch-density-max">
+      <value value="10"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="density-death">
+      <value value="true"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="approach-alpha">
+      <value value="0.01"/>
+      <value value="0.02"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="mate-death-prob">
+      <value value="0"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="track-migration">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="mate-radius">
+      <value value="1"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="disp-wander-times">
+      <value value="5"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="new-death">
+      <value value="true"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="mating-prob">
+      <value value="1"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="starting-number">
+      <value value="5000"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="loci">
+      <value value="2"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="random-min-matings">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="new_death_b">
+      <value value="15"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="death-prob">
+      <value value="0.25"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="report-litters-ticks">
+      <value value="100"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="cluster-patch-densities">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="new_death_d">
+      <value value="5"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="density-fecundity">
+      <value value="true"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="dispersal-mod-evolver">
+      <value value="1"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="smart-report-geno">
+      <value value="true"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="patches-report">
+      <value value="true"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="file-location">
+      <value value="&quot;/moto/ziab/users/jr3950/data/ABM/3.7.0-2linloci-1M-VarTauVarAlpha-3-LowerAlpha-371comp/&quot;"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="patch-density-min">
+      <value value="1"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="density-death-prob">
+      <value value="10"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="P_full_exists">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="density-radius">
+      <value value="3"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="w-advantage">
+      <value value="0.85"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="report-migration-ticks">
+      <value value="100"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="pest-patch-lasting">
+      <value value="50"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="only_phenotypic_range">
+      <value value="true"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="density-evolver-max-turtles">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="dispersal-density-updated-after-each-dispersal">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="linear-formula-dispersal">
+      <value value="true"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="ticks-when-t-comes-in">
+      <value value="100000"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="negative-binomial-approach">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="cc-sd-incr">
+      <value value="15"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="incremental-shuffle">
+      <value value="true"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="kill_t_above">
+      <value value="1"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="start_with_mutation">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="logit_disp_prob">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="d0-dividedby">
+      <value value="1000"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="d1-dividedby">
+      <value value="50000"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="P_inc_final">
+      <value value="0.001"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="P_inc_random">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="t-homozygous-fertile">
+      <value value="true"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="ptclassic">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="update-males-after-every-female">
+      <value value="true"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="reverse-who-comes-in">
+      <value value="false"/>
+    </enumeratedValueSet>
+  </experiment>
+  <experiment name="3.7.0-1linloci-100K-VarTauVarAlpha-LowerAlpha-371comp" repetitions="100" sequentialRunOrder="false" runMetricsEveryStep="false">
+    <setup>setup</setup>
+    <go>go</go>
+    <metric>count-w</metric>
+    <metric>count-t</metric>
+    <metric>count-tt</metric>
+    <metric>count-w + count-t + count-tt</metric>
+    <enumeratedValueSet variable="min-pxcor">
+      <value value="-5"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="min-pycor">
+      <value value="-5"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="max-pxcor">
+      <value value="4"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="max-pycor">
+      <value value="4"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="matings-report">
+      <value value="true"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="do-report-local-densities">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="dispersal-dd-evolver-2">
+      <value value="5"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="P_inc_set">
+      <value value="1"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="report-geno">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="random-patch-density">
+      <value value="true"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="t-homozygous-viability">
+      <value value="0"/>
+      <value value="0.25"/>
+      <value value="0.5"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="evolution-report">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="dispersal-mod-evolver-start">
+      <value value="0.5"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="version">
+      <value value="3"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="t-starting-frequency">
+      <value value="1"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="evolve-dispersal-density-dependance-2">
+      <value value="true"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="max-ticks">
+      <value value="100000"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="geno-ids-print-interval">
+      <value value="1000"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="dispersal-dd-evolver-start">
+      <value value="0"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="random-density-immunity">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="new-formula">
+      <value value="true"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="new-wander">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="wander-sex-radius">
+      <value value="1"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="evolve-dispersal-density-dependance">
+      <value value="true"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="perc-mm3">
+      <value value="1"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="t-homozygous-lethality">
+      <value value="1"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="evolution-rate-max">
+      <value value="1000"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="patch-fidelity">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="dispersal-dd-evolver">
+      <value value="1"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="shuffle-patches-timing">
+      <value value="1"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="new-dispersal">
+      <value value="true"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="more-mice-in-pest">
+      <value value="50"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="shuffle-patches">
+      <value value="true"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="new-density-dependent-dispersal">
+      <value value="true"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="dispersal-prob-t">
+      <value value="1"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="new_death_a">
+      <value value="3"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="P_full_set">
+      <value value="0.001"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="density-fecundity-strength">
+      <value value="1"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="min-matings">
+      <value value="0"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="fecundity-random">
+      <value value="0"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="max-turtles-total">
+      <value value="0"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="only-juvenile-dispersal">
+      <value value="true"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="new_death_c">
+      <value value="1"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="evolve-dispersal">
+      <value value="true"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="limit-perc-mm3-mice">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="fecundity-global">
+      <value value="6"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="dispersal-cost">
+      <value value="0.3"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="t-effect">
+      <value value="&quot;dominant&quot;"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="death-radius">
+      <value value="1"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="drive">
+      <value value="0.9"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="evolution-rate-min">
+      <value value="5"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="cc-mean">
+      <value value="50"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="d-formula-start">
+      <value value="0"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="end-with-t?">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="cc-sd">
+      <value value="15"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="t-w-reporting">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="max-matings">
+      <value value="3"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="dispersal-dd-evolver-3">
+      <value value="150"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="P_evo_decrease">
+      <value value="true"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="mortality-report">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="report-litters">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="when-to-disperse">
+      <value value="0"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="old-wander-extra-wander-chance">
+      <value value="0.5"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="interval-report-local-densities">
+      <value value="100"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="dispersal-prob-w">
+      <value value="1"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="extended-disadvantage-adaptation">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="patch-density-randomness">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="new-wander-chance">
+      <value value="15"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="matings-alpha">
+      <value value="0"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="pest-chance">
+      <value value="0"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="patch-density-max">
+      <value value="10"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="density-death">
+      <value value="true"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="approach-alpha">
+      <value value="0"/>
+      <value value="0.01"/>
+      <value value="0.02"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="mate-death-prob">
+      <value value="0"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="track-migration">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="mate-radius">
+      <value value="1"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="disp-wander-times">
+      <value value="5"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="new-death">
+      <value value="true"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="mating-prob">
+      <value value="1"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="starting-number">
+      <value value="5000"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="loci">
+      <value value="1"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="random-min-matings">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="new_death_b">
+      <value value="15"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="death-prob">
+      <value value="0.25"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="report-litters-ticks">
+      <value value="100"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="cluster-patch-densities">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="new_death_d">
+      <value value="5"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="density-fecundity">
+      <value value="true"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="dispersal-mod-evolver">
+      <value value="1"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="smart-report-geno">
+      <value value="true"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="patches-report">
+      <value value="true"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="file-location">
+      <value value="&quot;/moto/ziab/users/jr3950/data/ABM/3.7.0-1linloci-100K-VarTauVarAlpha-LowerAlpha-371comp/&quot;"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="patch-density-min">
+      <value value="1"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="density-death-prob">
+      <value value="10"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="P_full_exists">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="density-radius">
+      <value value="3"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="w-advantage">
+      <value value="0.85"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="report-migration-ticks">
+      <value value="100"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="pest-patch-lasting">
+      <value value="50"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="only_phenotypic_range">
+      <value value="true"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="density-evolver-max-turtles">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="dispersal-density-updated-after-each-dispersal">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="linear-formula-dispersal">
+      <value value="true"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="ticks-when-t-comes-in">
+      <value value="10000"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="negative-binomial-approach">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="cc-sd-incr">
+      <value value="15"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="incremental-shuffle">
+      <value value="true"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="kill_t_above">
+      <value value="1"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="start_with_mutation">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="logit_disp_prob">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="d0-dividedby">
+      <value value="1000"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="d1-dividedby">
+      <value value="50000"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="P_inc_final">
+      <value value="0.001"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="P_inc_random">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="t-homozygous-fertile">
+      <value value="true"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="ptclassic">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="update-males-after-every-female">
+      <value value="true"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="reverse-who-comes-in">
+      <value value="false"/>
+    </enumeratedValueSet>
+  </experiment>
+  <experiment name="3.7.0-2linloci-1M-InfertileMalesVarAlpha-LowerAlpha-371comp" repetitions="100" sequentialRunOrder="false" runMetricsEveryStep="false">
+    <setup>setup</setup>
+    <go>go</go>
+    <metric>count-w</metric>
+    <metric>count-t</metric>
+    <metric>count-tt</metric>
+    <metric>count-w + count-t + count-tt</metric>
+    <enumeratedValueSet variable="min-pxcor">
+      <value value="-5"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="min-pycor">
+      <value value="-5"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="max-pxcor">
+      <value value="4"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="max-pycor">
+      <value value="4"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="matings-report">
+      <value value="true"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="do-report-local-densities">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="dispersal-dd-evolver-2">
+      <value value="5"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="P_inc_set">
+      <value value="1"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="report-geno">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="random-patch-density">
+      <value value="true"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="t-homozygous-viability">
+      <value value="1"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="evolution-report">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="dispersal-mod-evolver-start">
+      <value value="0.5"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="version">
+      <value value="3"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="t-starting-frequency">
+      <value value="1"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="evolve-dispersal-density-dependance-2">
+      <value value="true"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="max-ticks">
+      <value value="1000000"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="geno-ids-print-interval">
+      <value value="10000"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="dispersal-dd-evolver-start">
+      <value value="0"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="random-density-immunity">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="new-formula">
+      <value value="true"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="new-wander">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="wander-sex-radius">
+      <value value="1"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="evolve-dispersal-density-dependance">
+      <value value="true"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="perc-mm3">
+      <value value="1"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="t-homozygous-lethality">
+      <value value="1"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="evolution-rate-max">
+      <value value="1000"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="patch-fidelity">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="dispersal-dd-evolver">
+      <value value="1"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="shuffle-patches-timing">
+      <value value="1"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="new-dispersal">
+      <value value="true"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="more-mice-in-pest">
+      <value value="50"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="shuffle-patches">
+      <value value="true"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="new-density-dependent-dispersal">
+      <value value="true"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="dispersal-prob-t">
+      <value value="1"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="new_death_a">
+      <value value="3"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="P_full_set">
+      <value value="0.001"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="density-fecundity-strength">
+      <value value="1"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="min-matings">
+      <value value="0"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="fecundity-random">
+      <value value="0"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="max-turtles-total">
+      <value value="0"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="only-juvenile-dispersal">
+      <value value="true"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="new_death_c">
+      <value value="1"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="evolve-dispersal">
+      <value value="true"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="limit-perc-mm3-mice">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="fecundity-global">
+      <value value="6"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="dispersal-cost">
+      <value value="0.3"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="t-effect">
+      <value value="&quot;dominant&quot;"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="death-radius">
+      <value value="1"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="drive">
+      <value value="0.9"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="evolution-rate-min">
+      <value value="5"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="cc-mean">
+      <value value="50"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="d-formula-start">
+      <value value="0"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="end-with-t?">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="cc-sd">
+      <value value="15"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="t-w-reporting">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="max-matings">
+      <value value="3"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="dispersal-dd-evolver-3">
+      <value value="150"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="P_evo_decrease">
+      <value value="true"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="mortality-report">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="report-litters">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="when-to-disperse">
+      <value value="0"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="old-wander-extra-wander-chance">
+      <value value="0.5"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="interval-report-local-densities">
+      <value value="100"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="dispersal-prob-w">
+      <value value="1"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="extended-disadvantage-adaptation">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="patch-density-randomness">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="new-wander-chance">
+      <value value="15"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="matings-alpha">
+      <value value="0"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="pest-chance">
+      <value value="0"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="patch-density-max">
+      <value value="10"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="density-death">
+      <value value="true"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="approach-alpha">
+      <value value="0"/>
+      <value value="0.01"/>
+      <value value="0.02"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="mate-death-prob">
+      <value value="0"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="track-migration">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="mate-radius">
+      <value value="1"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="disp-wander-times">
+      <value value="5"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="new-death">
+      <value value="true"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="mating-prob">
+      <value value="1"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="starting-number">
+      <value value="5000"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="loci">
+      <value value="2"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="random-min-matings">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="new_death_b">
+      <value value="15"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="death-prob">
+      <value value="0.25"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="report-litters-ticks">
+      <value value="100"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="cluster-patch-densities">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="new_death_d">
+      <value value="5"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="density-fecundity">
+      <value value="true"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="dispersal-mod-evolver">
+      <value value="1"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="smart-report-geno">
+      <value value="true"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="patches-report">
+      <value value="true"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="file-location">
+      <value value="&quot;/moto/ziab/users/jr3950/data/ABM/3.7.0-2linloci-1M-InfertileMalesVarAlpha-LowerAlpha-371comp/&quot;"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="patch-density-min">
+      <value value="1"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="density-death-prob">
+      <value value="10"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="P_full_exists">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="density-radius">
+      <value value="3"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="w-advantage">
+      <value value="0.85"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="report-migration-ticks">
+      <value value="100"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="pest-patch-lasting">
+      <value value="50"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="only_phenotypic_range">
+      <value value="true"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="density-evolver-max-turtles">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="dispersal-density-updated-after-each-dispersal">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="linear-formula-dispersal">
+      <value value="true"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="ticks-when-t-comes-in">
+      <value value="100000"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="negative-binomial-approach">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="cc-sd-incr">
+      <value value="15"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="incremental-shuffle">
+      <value value="true"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="kill_t_above">
+      <value value="1"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="start_with_mutation">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="logit_disp_prob">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="d0-dividedby">
+      <value value="1000"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="d1-dividedby">
+      <value value="50000"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="P_inc_final">
+      <value value="0.001"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="P_inc_random">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="t-homozygous-fertile">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="ptclassic">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="update-males-after-every-female">
+      <value value="true"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="reverse-who-comes-in">
+      <value value="false"/>
+    </enumeratedValueSet>
+  </experiment>
+  <experiment name="3.7.0-1linloci-100K-VarDriveVarPtsperm-LowerAlpha-371comp" repetitions="100" sequentialRunOrder="false" runMetricsEveryStep="false">
+    <setup>setup</setup>
+    <go>go</go>
+    <metric>count-w</metric>
+    <metric>count-t</metric>
+    <metric>count-tt</metric>
+    <metric>count-w + count-t + count-tt</metric>
+    <enumeratedValueSet variable="min-pxcor">
+      <value value="-5"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="min-pycor">
+      <value value="-5"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="max-pxcor">
+      <value value="4"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="max-pycor">
+      <value value="4"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="matings-report">
+      <value value="true"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="do-report-local-densities">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="dispersal-dd-evolver-2">
+      <value value="5"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="P_inc_set">
+      <value value="1"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="report-geno">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="random-patch-density">
+      <value value="true"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="t-homozygous-viability">
+      <value value="0"/>
+      <value value="1"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="evolution-report">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="dispersal-mod-evolver-start">
+      <value value="0.5"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="version">
+      <value value="3"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="t-starting-frequency">
+      <value value="1"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="evolve-dispersal-density-dependance-2">
+      <value value="true"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="max-ticks">
+      <value value="100000"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="geno-ids-print-interval">
+      <value value="1000"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="dispersal-dd-evolver-start">
+      <value value="0"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="random-density-immunity">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="new-formula">
+      <value value="true"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="new-wander">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="wander-sex-radius">
+      <value value="1"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="evolve-dispersal-density-dependance">
+      <value value="true"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="perc-mm3">
+      <value value="1"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="t-homozygous-lethality">
+      <value value="1"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="evolution-rate-max">
+      <value value="1000"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="patch-fidelity">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="dispersal-dd-evolver">
+      <value value="1"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="shuffle-patches-timing">
+      <value value="1"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="new-dispersal">
+      <value value="true"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="more-mice-in-pest">
+      <value value="50"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="shuffle-patches">
+      <value value="true"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="new-density-dependent-dispersal">
+      <value value="true"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="dispersal-prob-t">
+      <value value="1"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="new_death_a">
+      <value value="3"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="P_full_set">
+      <value value="0.001"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="density-fecundity-strength">
+      <value value="1"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="min-matings">
+      <value value="0"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="fecundity-random">
+      <value value="0"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="max-turtles-total">
+      <value value="0"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="only-juvenile-dispersal">
+      <value value="true"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="new_death_c">
+      <value value="1"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="evolve-dispersal">
+      <value value="true"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="limit-perc-mm3-mice">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="fecundity-global">
+      <value value="6"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="dispersal-cost">
+      <value value="0.3"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="t-effect">
+      <value value="&quot;dominant&quot;"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="death-radius">
+      <value value="1"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="drive">
+      <value value="0.5"/>
+      <value value="0.55"/>
+      <value value="0.6"/>
+      <value value="0.65"/>
+      <value value="0.7"/>
+      <value value="0.75"/>
+      <value value="0.8"/>
+      <value value="0.85"/>
+      <value value="0.9"/>
+      <value value="0.95"/>
+      <value value="1"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="evolution-rate-min">
+      <value value="5"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="cc-mean">
+      <value value="50"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="d-formula-start">
+      <value value="0"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="end-with-t?">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="cc-sd">
+      <value value="15"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="t-w-reporting">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="max-matings">
+      <value value="3"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="dispersal-dd-evolver-3">
+      <value value="150"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="P_evo_decrease">
+      <value value="true"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="mortality-report">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="report-litters">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="when-to-disperse">
+      <value value="0"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="old-wander-extra-wander-chance">
+      <value value="0.5"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="interval-report-local-densities">
+      <value value="100"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="dispersal-prob-w">
+      <value value="1"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="extended-disadvantage-adaptation">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="patch-density-randomness">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="new-wander-chance">
+      <value value="15"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="matings-alpha">
+      <value value="0"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="pest-chance">
+      <value value="0"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="patch-density-max">
+      <value value="10"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="density-death">
+      <value value="true"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="approach-alpha">
+      <value value="0.02"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="mate-death-prob">
+      <value value="0"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="track-migration">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="mate-radius">
+      <value value="1"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="disp-wander-times">
+      <value value="5"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="new-death">
+      <value value="true"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="mating-prob">
+      <value value="1"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="starting-number">
+      <value value="5000"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="loci">
+      <value value="1"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="random-min-matings">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="new_death_b">
+      <value value="15"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="death-prob">
+      <value value="0.25"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="report-litters-ticks">
+      <value value="100"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="cluster-patch-densities">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="new_death_d">
+      <value value="5"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="density-fecundity">
+      <value value="true"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="dispersal-mod-evolver">
+      <value value="1"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="smart-report-geno">
+      <value value="true"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="patches-report">
+      <value value="true"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="file-location">
+      <value value="&quot;/moto/ziab/users/jr3950/data/ABM/3.7.0-1linloci-100K-VarDriveVarPtsperm-LowerAlpha-371comp/&quot;"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="patch-density-min">
+      <value value="1"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="density-death-prob">
+      <value value="10"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="P_full_exists">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="density-radius">
+      <value value="3"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="w-advantage">
+      <value value="0.5"/>
+      <value value="0.55"/>
+      <value value="0.6"/>
+      <value value="0.65"/>
+      <value value="0.7"/>
+      <value value="0.75"/>
+      <value value="0.8"/>
+      <value value="0.85"/>
+      <value value="0.9"/>
+      <value value="0.95"/>
+      <value value="1"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="report-migration-ticks">
+      <value value="100"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="pest-patch-lasting">
+      <value value="50"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="only_phenotypic_range">
+      <value value="true"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="density-evolver-max-turtles">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="dispersal-density-updated-after-each-dispersal">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="linear-formula-dispersal">
+      <value value="true"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="ticks-when-t-comes-in">
+      <value value="10000"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="negative-binomial-approach">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="cc-sd-incr">
+      <value value="15"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="incremental-shuffle">
+      <value value="true"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="kill_t_above">
+      <value value="1"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="start_with_mutation">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="logit_disp_prob">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="d0-dividedby">
+      <value value="1000"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="d1-dividedby">
+      <value value="50000"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="P_inc_final">
+      <value value="0.001"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="P_inc_random">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="t-homozygous-fertile">
+      <value value="true"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="ptclassic">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="update-males-after-every-female">
+      <value value="true"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="reverse-who-comes-in">
+      <value value="false"/>
+    </enumeratedValueSet>
+  </experiment>
+  <experiment name="3.7.0-1linloci-100K-VarTauVarAlpha-FreqExp-LowerAlpha-371comp" repetitions="100" sequentialRunOrder="false" runMetricsEveryStep="false">
+    <setup>setup</setup>
+    <go>go</go>
+    <metric>count-w</metric>
+    <metric>count-t</metric>
+    <metric>count-tt</metric>
+    <metric>count-w + count-t + count-tt</metric>
+    <enumeratedValueSet variable="min-pxcor">
+      <value value="-5"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="min-pycor">
+      <value value="-5"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="max-pxcor">
+      <value value="4"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="max-pycor">
+      <value value="4"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="matings-report">
+      <value value="true"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="do-report-local-densities">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="dispersal-dd-evolver-2">
+      <value value="5"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="P_inc_set">
+      <value value="-1"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="report-geno">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="random-patch-density">
+      <value value="true"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="t-homozygous-viability">
+      <value value="0"/>
+      <value value="0.25"/>
+      <value value="0.5"/>
+      <value value="1"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="evolution-report">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="dispersal-mod-evolver-start">
+      <value value="0.1"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="version">
+      <value value="3"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="t-starting-frequency">
+      <value value="1"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="evolve-dispersal-density-dependance-2">
+      <value value="true"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="max-ticks">
+      <value value="10000"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="geno-ids-print-interval">
+      <value value="1000"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="dispersal-dd-evolver-start">
+      <value value="0"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="random-density-immunity">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="new-formula">
+      <value value="true"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="new-wander">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="wander-sex-radius">
+      <value value="1"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="evolve-dispersal-density-dependance">
+      <value value="true"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="perc-mm3">
+      <value value="1"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="t-homozygous-lethality">
+      <value value="1"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="evolution-rate-max">
+      <value value="1000"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="patch-fidelity">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="dispersal-dd-evolver">
+      <value value="1"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="shuffle-patches-timing">
+      <value value="1"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="new-dispersal">
+      <value value="true"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="more-mice-in-pest">
+      <value value="50"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="shuffle-patches">
+      <value value="true"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="new-density-dependent-dispersal">
+      <value value="true"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="dispersal-prob-t">
+      <value value="1"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="new_death_a">
+      <value value="3"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="P_full_set">
+      <value value="0.001"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="density-fecundity-strength">
+      <value value="1"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="min-matings">
+      <value value="0"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="fecundity-random">
+      <value value="0"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="max-turtles-total">
+      <value value="0"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="only-juvenile-dispersal">
+      <value value="true"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="new_death_c">
+      <value value="1"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="evolve-dispersal">
+      <value value="true"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="limit-perc-mm3-mice">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="fecundity-global">
+      <value value="6"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="dispersal-cost">
+      <value value="0.3"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="t-effect">
+      <value value="&quot;dominant&quot;"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="death-radius">
+      <value value="1"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="drive">
+      <value value="0.9"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="evolution-rate-min">
+      <value value="5"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="cc-mean">
+      <value value="50"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="d-formula-start">
+      <value value="0"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="end-with-t?">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="cc-sd">
+      <value value="15"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="t-w-reporting">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="max-matings">
+      <value value="3"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="dispersal-dd-evolver-3">
+      <value value="150"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="P_evo_decrease">
+      <value value="true"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="mortality-report">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="report-litters">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="when-to-disperse">
+      <value value="0"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="old-wander-extra-wander-chance">
+      <value value="0.5"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="interval-report-local-densities">
+      <value value="100"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="dispersal-prob-w">
+      <value value="1"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="extended-disadvantage-adaptation">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="patch-density-randomness">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="new-wander-chance">
+      <value value="15"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="matings-alpha">
+      <value value="0"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="pest-chance">
+      <value value="0"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="patch-density-max">
+      <value value="10"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="density-death">
+      <value value="true"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="approach-alpha">
+      <value value="0.01"/>
+      <value value="0.02"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="mate-death-prob">
+      <value value="0"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="track-migration">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="mate-radius">
+      <value value="1"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="disp-wander-times">
+      <value value="5"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="new-death">
+      <value value="true"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="mating-prob">
+      <value value="1"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="starting-number">
+      <value value="5000"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="loci">
+      <value value="1"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="random-min-matings">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="new_death_b">
+      <value value="15"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="death-prob">
+      <value value="0.25"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="report-litters-ticks">
+      <value value="100"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="cluster-patch-densities">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="new_death_d">
+      <value value="5"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="density-fecundity">
+      <value value="true"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="dispersal-mod-evolver">
+      <value value="1"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="smart-report-geno">
+      <value value="true"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="patches-report">
+      <value value="true"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="file-location">
+      <value value="&quot;/moto/ziab/users/jr3950/data/ABM/3.7.0-1linloci-100K-VarTauVarAlpha-FreqExp-LowerAlpha-371comp/&quot;"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="patch-density-min">
+      <value value="1"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="density-death-prob">
+      <value value="10"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="P_full_exists">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="density-radius">
+      <value value="3"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="w-advantage">
+      <value value="0.85"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="report-migration-ticks">
+      <value value="100"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="pest-patch-lasting">
+      <value value="50"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="only_phenotypic_range">
+      <value value="true"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="density-evolver-max-turtles">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="dispersal-density-updated-after-each-dispersal">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="linear-formula-dispersal">
+      <value value="true"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="ticks-when-t-comes-in">
+      <value value="10"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="negative-binomial-approach">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="cc-sd-incr">
+      <value value="15"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="incremental-shuffle">
+      <value value="true"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="kill_t_above">
+      <value value="1"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="start_with_mutation">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="logit_disp_prob">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="d0-dividedby">
+      <value value="1000"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="d1-dividedby">
+      <value value="50000"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="P_inc_final">
+      <value value="-1"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="P_inc_random">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="t-homozygous-fertile">
+      <value value="true"/>
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="ptclassic">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="update-males-after-every-female">
+      <value value="true"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="reverse-who-comes-in">
+      <value value="false"/>
+    </enumeratedValueSet>
+  </experiment>
+  <experiment name="3.7.0-2linloci-1M-NatCond-Heterogeneity-2-LowerAlpha-371comp" repetitions="100" sequentialRunOrder="false" runMetricsEveryStep="false">
+    <setup>setup</setup>
+    <go>go</go>
+    <metric>count-w</metric>
+    <metric>count-t</metric>
+    <metric>count-tt</metric>
+    <metric>count-w + count-t + count-tt</metric>
+    <enumeratedValueSet variable="min-pxcor">
+      <value value="-5"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="min-pycor">
+      <value value="-5"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="max-pxcor">
+      <value value="4"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="max-pycor">
+      <value value="4"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="matings-report">
+      <value value="true"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="do-report-local-densities">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="dispersal-dd-evolver-2">
+      <value value="5"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="P_inc_set">
+      <value value="1"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="report-geno">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="random-patch-density">
+      <value value="true"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="t-homozygous-viability">
+      <value value="0"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="evolution-report">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="dispersal-mod-evolver-start">
+      <value value="0.5"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="version">
+      <value value="3"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="t-starting-frequency">
+      <value value="1"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="evolve-dispersal-density-dependance-2">
+      <value value="true"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="max-ticks">
+      <value value="1000000"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="geno-ids-print-interval">
+      <value value="10000"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="dispersal-dd-evolver-start">
+      <value value="0"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="random-density-immunity">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="new-formula">
+      <value value="true"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="new-wander">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="wander-sex-radius">
+      <value value="1"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="evolve-dispersal-density-dependance">
+      <value value="true"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="perc-mm3">
+      <value value="1"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="t-homozygous-lethality">
+      <value value="1"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="evolution-rate-max">
+      <value value="1000"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="patch-fidelity">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="dispersal-dd-evolver">
+      <value value="1"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="shuffle-patches-timing">
+      <value value="1"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="new-dispersal">
+      <value value="true"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="more-mice-in-pest">
+      <value value="50"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="shuffle-patches">
+      <value value="true"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="new-density-dependent-dispersal">
+      <value value="true"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="dispersal-prob-t">
+      <value value="1"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="new_death_a">
+      <value value="3"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="P_full_set">
+      <value value="0.001"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="density-fecundity-strength">
+      <value value="1"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="min-matings">
+      <value value="0"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="fecundity-random">
+      <value value="0"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="max-turtles-total">
+      <value value="0"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="only-juvenile-dispersal">
+      <value value="true"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="new_death_c">
+      <value value="1"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="evolve-dispersal">
+      <value value="true"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="limit-perc-mm3-mice">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="fecundity-global">
+      <value value="6"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="dispersal-cost">
+      <value value="0.3"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="t-effect">
+      <value value="&quot;dominant&quot;"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="death-radius">
+      <value value="1"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="drive">
+      <value value="0.9"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="evolution-rate-min">
+      <value value="5"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="cc-mean">
+      <value value="50"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="d-formula-start">
+      <value value="0"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="end-with-t?">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="cc-sd">
+      <value value="0"/>
+      <value value="5"/>
+      <value value="10"/>
+      <value value="15"/>
+      <value value="20"/>
+      <value value="25"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="t-w-reporting">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="max-matings">
+      <value value="3"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="dispersal-dd-evolver-3">
+      <value value="150"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="P_evo_decrease">
+      <value value="true"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="mortality-report">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="report-litters">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="when-to-disperse">
+      <value value="0"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="old-wander-extra-wander-chance">
+      <value value="0.5"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="interval-report-local-densities">
+      <value value="100"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="dispersal-prob-w">
+      <value value="1"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="extended-disadvantage-adaptation">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="patch-density-randomness">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="new-wander-chance">
+      <value value="15"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="matings-alpha">
+      <value value="0"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="pest-chance">
+      <value value="0"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="patch-density-max">
+      <value value="10"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="density-death">
+      <value value="true"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="approach-alpha">
+      <value value="0.02"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="mate-death-prob">
+      <value value="0"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="track-migration">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="mate-radius">
+      <value value="1"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="disp-wander-times">
+      <value value="5"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="new-death">
+      <value value="true"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="mating-prob">
+      <value value="1"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="starting-number">
+      <value value="5000"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="loci">
+      <value value="2"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="random-min-matings">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="new_death_b">
+      <value value="15"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="death-prob">
+      <value value="0.25"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="report-litters-ticks">
+      <value value="100"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="cluster-patch-densities">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="new_death_d">
+      <value value="5"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="density-fecundity">
+      <value value="true"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="dispersal-mod-evolver">
+      <value value="1"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="smart-report-geno">
+      <value value="true"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="patches-report">
+      <value value="true"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="file-location">
+      <value value="&quot;/moto/ziab/users/jr3950/data/ABM/3.7.0-2linloci-1M-NatCond-Heterogeneity-2-LowerAlpha-371comp/&quot;"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="patch-density-min">
+      <value value="1"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="density-death-prob">
+      <value value="10"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="P_full_exists">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="density-radius">
+      <value value="3"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="w-advantage">
+      <value value="0.85"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="report-migration-ticks">
+      <value value="100"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="pest-patch-lasting">
+      <value value="50"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="only_phenotypic_range">
+      <value value="true"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="density-evolver-max-turtles">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="dispersal-density-updated-after-each-dispersal">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="linear-formula-dispersal">
+      <value value="true"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="ticks-when-t-comes-in">
+      <value value="100000"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="negative-binomial-approach">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="cc-sd-incr">
+      <value value="0"/>
+      <value value="5"/>
+      <value value="10"/>
+      <value value="15"/>
+      <value value="20"/>
+      <value value="25"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="incremental-shuffle">
+      <value value="true"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="kill_t_above">
+      <value value="1"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="start_with_mutation">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="logit_disp_prob">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="d0-dividedby">
+      <value value="1000"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="d1-dividedby">
+      <value value="50000"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="P_inc_final">
+      <value value="0.001"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="P_inc_random">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="t-homozygous-fertile">
+      <value value="true"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="ptclassic">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="update-males-after-every-female">
+      <value value="true"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="reverse-who-comes-in">
+      <value value="false"/>
+    </enumeratedValueSet>
+  </experiment>
+  <experiment name="3.7.1-1linloci-100K-NatCond-ReverseStart-LowerAlpha" repetitions="100" sequentialRunOrder="false" runMetricsEveryStep="false">
+    <setup>setup</setup>
+    <go>go</go>
+    <metric>count-w</metric>
+    <metric>count-t</metric>
+    <metric>count-tt</metric>
+    <metric>count-w + count-t + count-tt</metric>
+    <enumeratedValueSet variable="min-pxcor">
+      <value value="-5"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="min-pycor">
+      <value value="-5"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="max-pxcor">
+      <value value="4"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="max-pycor">
+      <value value="4"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="matings-report">
+      <value value="true"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="do-report-local-densities">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="dispersal-dd-evolver-2">
+      <value value="5"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="P_inc_set">
+      <value value="1"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="report-geno">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="random-patch-density">
+      <value value="true"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="t-homozygous-viability">
+      <value value="0"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="evolution-report">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="dispersal-mod-evolver-start">
+      <value value="0.5"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="version">
+      <value value="3"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="t-starting-frequency">
+      <value value="100"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="evolve-dispersal-density-dependance-2">
+      <value value="true"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="max-ticks">
+      <value value="100000"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="geno-ids-print-interval">
+      <value value="1000"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="dispersal-dd-evolver-start">
+      <value value="0"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="random-density-immunity">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="new-formula">
+      <value value="true"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="new-wander">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="wander-sex-radius">
+      <value value="1"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="evolve-dispersal-density-dependance">
+      <value value="true"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="perc-mm3">
+      <value value="1"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="t-homozygous-lethality">
+      <value value="1"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="evolution-rate-max">
+      <value value="1000"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="patch-fidelity">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="dispersal-dd-evolver">
+      <value value="1"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="shuffle-patches-timing">
+      <value value="1"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="new-dispersal">
+      <value value="true"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="more-mice-in-pest">
+      <value value="50"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="shuffle-patches">
+      <value value="true"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="new-density-dependent-dispersal">
+      <value value="true"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="dispersal-prob-t">
+      <value value="1"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="new_death_a">
+      <value value="3"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="P_full_set">
+      <value value="0.001"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="density-fecundity-strength">
+      <value value="1"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="min-matings">
+      <value value="0"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="fecundity-random">
+      <value value="0"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="max-turtles-total">
+      <value value="0"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="only-juvenile-dispersal">
+      <value value="true"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="new_death_c">
+      <value value="1"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="evolve-dispersal">
+      <value value="true"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="limit-perc-mm3-mice">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="fecundity-global">
+      <value value="6"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="dispersal-cost">
+      <value value="0.3"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="t-effect">
+      <value value="&quot;dominant&quot;"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="death-radius">
+      <value value="1"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="drive">
+      <value value="0.9"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="evolution-rate-min">
+      <value value="5"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="cc-mean">
+      <value value="50"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="d-formula-start">
+      <value value="0"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="end-with-t?">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="cc-sd">
+      <value value="15"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="t-w-reporting">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="max-matings">
+      <value value="3"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="dispersal-dd-evolver-3">
+      <value value="150"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="P_evo_decrease">
+      <value value="true"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="mortality-report">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="report-litters">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="when-to-disperse">
+      <value value="0"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="old-wander-extra-wander-chance">
+      <value value="0.5"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="interval-report-local-densities">
+      <value value="100"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="dispersal-prob-w">
+      <value value="1"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="extended-disadvantage-adaptation">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="patch-density-randomness">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="new-wander-chance">
+      <value value="15"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="matings-alpha">
+      <value value="0"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="pest-chance">
+      <value value="0"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="patch-density-max">
+      <value value="10"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="density-death">
+      <value value="true"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="approach-alpha">
+      <value value="0.02"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="mate-death-prob">
+      <value value="0"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="track-migration">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="mate-radius">
+      <value value="1"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="disp-wander-times">
+      <value value="5"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="new-death">
+      <value value="true"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="mating-prob">
+      <value value="1"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="starting-number">
+      <value value="5000"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="loci">
+      <value value="1"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="random-min-matings">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="new_death_b">
+      <value value="15"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="death-prob">
+      <value value="0.25"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="report-litters-ticks">
+      <value value="100"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="cluster-patch-densities">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="new_death_d">
+      <value value="5"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="density-fecundity">
+      <value value="true"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="dispersal-mod-evolver">
+      <value value="1"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="smart-report-geno">
+      <value value="true"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="patches-report">
+      <value value="true"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="file-location">
+      <value value="&quot;/moto/ziab/users/jr3950/data/ABM/3.7.1-1linloci-100K-NatCond-ReverseStart-LowerAlpha/&quot;"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="patch-density-min">
+      <value value="1"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="density-death-prob">
+      <value value="10"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="P_full_exists">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="density-radius">
+      <value value="3"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="w-advantage">
+      <value value="0.85"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="report-migration-ticks">
+      <value value="100"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="pest-patch-lasting">
+      <value value="50"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="only_phenotypic_range">
+      <value value="true"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="density-evolver-max-turtles">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="dispersal-density-updated-after-each-dispersal">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="linear-formula-dispersal">
+      <value value="true"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="ticks-when-t-comes-in">
+      <value value="10000"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="negative-binomial-approach">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="cc-sd-incr">
+      <value value="15"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="incremental-shuffle">
+      <value value="true"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="kill_t_above">
+      <value value="1"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="start_with_mutation">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="logit_disp_prob">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="d0-dividedby">
+      <value value="1000"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="d1-dividedby">
+      <value value="50000"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="P_inc_final">
+      <value value="0.001"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="P_inc_random">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="t-homozygous-fertile">
+      <value value="true"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="ptclassic">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="update-males-after-every-female">
+      <value value="true"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="reverse-who-comes-in">
+      <value value="true"/>
+    </enumeratedValueSet>
+  </experiment>
+  <experiment name="3.7.1-2linloci-1M-NatCond-ReverseStart-LowerAlpha" repetitions="100" sequentialRunOrder="false" runMetricsEveryStep="false">
+    <setup>setup</setup>
+    <go>go</go>
+    <metric>count-w</metric>
+    <metric>count-t</metric>
+    <metric>count-tt</metric>
+    <metric>count-w + count-t + count-tt</metric>
+    <enumeratedValueSet variable="min-pxcor">
+      <value value="-5"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="min-pycor">
+      <value value="-5"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="max-pxcor">
+      <value value="4"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="max-pycor">
+      <value value="4"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="matings-report">
+      <value value="true"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="do-report-local-densities">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="dispersal-dd-evolver-2">
+      <value value="5"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="P_inc_set">
+      <value value="1"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="report-geno">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="random-patch-density">
+      <value value="true"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="t-homozygous-viability">
+      <value value="0"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="evolution-report">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="dispersal-mod-evolver-start">
+      <value value="0.5"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="version">
+      <value value="3"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="t-starting-frequency">
+      <value value="100"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="evolve-dispersal-density-dependance-2">
+      <value value="true"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="max-ticks">
+      <value value="1000000"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="geno-ids-print-interval">
+      <value value="10000"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="dispersal-dd-evolver-start">
+      <value value="0"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="random-density-immunity">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="new-formula">
+      <value value="true"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="new-wander">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="wander-sex-radius">
+      <value value="1"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="evolve-dispersal-density-dependance">
+      <value value="true"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="perc-mm3">
+      <value value="1"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="t-homozygous-lethality">
+      <value value="1"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="evolution-rate-max">
+      <value value="1000"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="patch-fidelity">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="dispersal-dd-evolver">
+      <value value="1"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="shuffle-patches-timing">
+      <value value="1"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="new-dispersal">
+      <value value="true"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="more-mice-in-pest">
+      <value value="50"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="shuffle-patches">
+      <value value="true"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="new-density-dependent-dispersal">
+      <value value="true"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="dispersal-prob-t">
+      <value value="1"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="new_death_a">
+      <value value="3"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="P_full_set">
+      <value value="0.001"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="density-fecundity-strength">
+      <value value="1"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="min-matings">
+      <value value="0"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="fecundity-random">
+      <value value="0"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="max-turtles-total">
+      <value value="0"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="only-juvenile-dispersal">
+      <value value="true"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="new_death_c">
+      <value value="1"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="evolve-dispersal">
+      <value value="true"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="limit-perc-mm3-mice">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="fecundity-global">
+      <value value="6"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="dispersal-cost">
+      <value value="0.3"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="t-effect">
+      <value value="&quot;dominant&quot;"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="death-radius">
+      <value value="1"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="drive">
+      <value value="0.9"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="evolution-rate-min">
+      <value value="5"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="cc-mean">
+      <value value="50"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="d-formula-start">
+      <value value="0"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="end-with-t?">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="cc-sd">
+      <value value="15"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="t-w-reporting">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="max-matings">
+      <value value="3"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="dispersal-dd-evolver-3">
+      <value value="150"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="P_evo_decrease">
+      <value value="true"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="mortality-report">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="report-litters">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="when-to-disperse">
+      <value value="0"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="old-wander-extra-wander-chance">
+      <value value="0.5"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="interval-report-local-densities">
+      <value value="100"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="dispersal-prob-w">
+      <value value="1"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="extended-disadvantage-adaptation">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="patch-density-randomness">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="new-wander-chance">
+      <value value="15"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="matings-alpha">
+      <value value="0"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="pest-chance">
+      <value value="0"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="patch-density-max">
+      <value value="10"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="density-death">
+      <value value="true"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="approach-alpha">
+      <value value="0.02"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="mate-death-prob">
+      <value value="0"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="track-migration">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="mate-radius">
+      <value value="1"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="disp-wander-times">
+      <value value="5"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="new-death">
+      <value value="true"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="mating-prob">
+      <value value="1"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="starting-number">
+      <value value="5000"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="loci">
+      <value value="2"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="random-min-matings">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="new_death_b">
+      <value value="15"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="death-prob">
+      <value value="0.25"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="report-litters-ticks">
+      <value value="100"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="cluster-patch-densities">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="new_death_d">
+      <value value="5"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="density-fecundity">
+      <value value="true"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="dispersal-mod-evolver">
+      <value value="1"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="smart-report-geno">
+      <value value="true"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="patches-report">
+      <value value="true"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="file-location">
+      <value value="&quot;/moto/ziab/users/jr3950/data/ABM/3.7.1-2linloci-1M-NatCond-ReverseStart-LowerAlpha/&quot;"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="patch-density-min">
+      <value value="1"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="density-death-prob">
+      <value value="10"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="P_full_exists">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="density-radius">
+      <value value="3"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="w-advantage">
+      <value value="0.85"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="report-migration-ticks">
+      <value value="100"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="pest-patch-lasting">
+      <value value="50"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="only_phenotypic_range">
+      <value value="true"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="density-evolver-max-turtles">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="dispersal-density-updated-after-each-dispersal">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="linear-formula-dispersal">
+      <value value="true"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="ticks-when-t-comes-in">
+      <value value="100000"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="negative-binomial-approach">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="cc-sd-incr">
+      <value value="15"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="incremental-shuffle">
+      <value value="true"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="kill_t_above">
+      <value value="1"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="start_with_mutation">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="logit_disp_prob">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="d0-dividedby">
+      <value value="1000"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="d1-dividedby">
+      <value value="50000"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="P_inc_final">
+      <value value="0.001"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="P_inc_random">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="t-homozygous-fertile">
+      <value value="true"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="ptclassic">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="update-males-after-every-female">
+      <value value="true"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="reverse-who-comes-in">
+      <value value="true"/>
+    </enumeratedValueSet>
+  </experiment>
+  <experiment name="3.7.2-2linloci-1M-VarTauVarAlpha-LowerAlpha-SwitchTIntoSim" repetitions="100" sequentialRunOrder="false" runMetricsEveryStep="false">
+    <setup>setup</setup>
+    <go>go</go>
+    <metric>count-w</metric>
+    <metric>count-t</metric>
+    <metric>count-tt</metric>
+    <metric>count-w + count-t + count-tt</metric>
+    <enumeratedValueSet variable="min-pxcor">
+      <value value="-5"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="min-pycor">
+      <value value="-5"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="max-pxcor">
+      <value value="4"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="max-pycor">
+      <value value="4"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="matings-report">
+      <value value="true"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="do-report-local-densities">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="dispersal-dd-evolver-2">
+      <value value="5"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="P_inc_set">
+      <value value="1"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="report-geno">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="random-patch-density">
+      <value value="true"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="t-homozygous-viability">
+      <value value="0"/>
+      <value value="0.25"/>
+      <value value="0.5"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="evolution-report">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="dispersal-mod-evolver-start">
+      <value value="0.5"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="version">
+      <value value="3"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="t-starting-frequency">
+      <value value="1"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="evolve-dispersal-density-dependance-2">
+      <value value="true"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="max-ticks">
+      <value value="1000000"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="geno-ids-print-interval">
+      <value value="10000"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="dispersal-dd-evolver-start">
+      <value value="0"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="random-density-immunity">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="new-formula">
+      <value value="true"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="new-wander">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="wander-sex-radius">
+      <value value="1"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="evolve-dispersal-density-dependance">
+      <value value="true"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="perc-mm3">
+      <value value="1"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="t-homozygous-lethality">
+      <value value="1"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="evolution-rate-max">
+      <value value="1000"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="patch-fidelity">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="dispersal-dd-evolver">
+      <value value="1"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="shuffle-patches-timing">
+      <value value="1"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="new-dispersal">
+      <value value="true"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="more-mice-in-pest">
+      <value value="50"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="shuffle-patches">
+      <value value="true"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="new-density-dependent-dispersal">
+      <value value="true"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="dispersal-prob-t">
+      <value value="1"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="new_death_a">
+      <value value="3"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="P_full_set">
+      <value value="0.001"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="density-fecundity-strength">
+      <value value="1"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="min-matings">
+      <value value="0"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="fecundity-random">
+      <value value="0"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="max-turtles-total">
+      <value value="0"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="only-juvenile-dispersal">
+      <value value="true"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="new_death_c">
+      <value value="1"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="evolve-dispersal">
+      <value value="true"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="limit-perc-mm3-mice">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="fecundity-global">
+      <value value="6"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="dispersal-cost">
+      <value value="0.3"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="t-effect">
+      <value value="&quot;dominant&quot;"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="death-radius">
+      <value value="1"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="drive">
+      <value value="0.9"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="evolution-rate-min">
+      <value value="5"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="cc-mean">
+      <value value="50"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="d-formula-start">
+      <value value="0"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="end-with-t?">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="cc-sd">
+      <value value="15"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="t-w-reporting">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="max-matings">
+      <value value="3"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="dispersal-dd-evolver-3">
+      <value value="150"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="P_evo_decrease">
+      <value value="true"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="mortality-report">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="report-litters">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="when-to-disperse">
+      <value value="0"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="old-wander-extra-wander-chance">
+      <value value="0.5"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="interval-report-local-densities">
+      <value value="100"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="dispersal-prob-w">
+      <value value="1"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="extended-disadvantage-adaptation">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="patch-density-randomness">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="new-wander-chance">
+      <value value="15"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="matings-alpha">
+      <value value="0"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="pest-chance">
+      <value value="0"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="patch-density-max">
+      <value value="10"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="density-death">
+      <value value="true"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="approach-alpha">
+      <value value="0"/>
+      <value value="0.01"/>
+      <value value="0.02"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="mate-death-prob">
+      <value value="0"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="track-migration">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="mate-radius">
+      <value value="1"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="disp-wander-times">
+      <value value="5"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="new-death">
+      <value value="true"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="mating-prob">
+      <value value="1"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="starting-number">
+      <value value="5000"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="loci">
+      <value value="2"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="random-min-matings">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="new_death_b">
+      <value value="15"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="death-prob">
+      <value value="0.25"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="report-litters-ticks">
+      <value value="100"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="cluster-patch-densities">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="new_death_d">
+      <value value="5"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="density-fecundity">
+      <value value="true"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="dispersal-mod-evolver">
+      <value value="1"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="smart-report-geno">
+      <value value="true"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="patches-report">
+      <value value="true"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="file-location">
+      <value value="&quot;/moto/ziab/users/jr3950/data/ABM/3.7.2-2linloci-1M-VarTauVarAlpha-LowerAlpha-SwitchTIntoSim/&quot;"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="patch-density-min">
+      <value value="1"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="density-death-prob">
+      <value value="10"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="P_full_exists">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="density-radius">
+      <value value="3"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="w-advantage">
+      <value value="0.85"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="report-migration-ticks">
+      <value value="100"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="pest-patch-lasting">
+      <value value="50"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="only_phenotypic_range">
+      <value value="true"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="density-evolver-max-turtles">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="dispersal-density-updated-after-each-dispersal">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="linear-formula-dispersal">
+      <value value="true"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="ticks-when-t-comes-in">
+      <value value="100000"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="negative-binomial-approach">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="cc-sd-incr">
+      <value value="15"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="incremental-shuffle">
+      <value value="true"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="kill_t_above">
+      <value value="1"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="start_with_mutation">
+      <value value="true"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="logit_disp_prob">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="d0-dividedby">
+      <value value="1000"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="d1-dividedby">
+      <value value="50000"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="P_inc_final">
+      <value value="0.001"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="P_inc_random">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="t-homozygous-fertile">
+      <value value="true"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="ptclassic">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="update-males-after-every-female">
+      <value value="true"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="reverse-who-comes-in">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="switch-turtles">
+      <value value="true"/>
+    </enumeratedValueSet>
+  </experiment>
+  <experiment name="3.7.2-2linloci-1M-VarTauVarAlpha-LowerAlpha-SwitchTIntoSim-2" repetitions="100" sequentialRunOrder="false" runMetricsEveryStep="false">
+    <setup>setup</setup>
+    <go>go</go>
+    <metric>count-w</metric>
+    <metric>count-t</metric>
+    <metric>count-tt</metric>
+    <metric>count-w + count-t + count-tt</metric>
+    <enumeratedValueSet variable="min-pxcor">
+      <value value="-5"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="min-pycor">
+      <value value="-5"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="max-pxcor">
+      <value value="4"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="max-pycor">
+      <value value="4"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="matings-report">
+      <value value="true"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="do-report-local-densities">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="dispersal-dd-evolver-2">
+      <value value="5"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="P_inc_set">
+      <value value="1"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="report-geno">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="random-patch-density">
+      <value value="true"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="t-homozygous-viability">
+      <value value="0"/>
+      <value value="0.25"/>
+      <value value="0.5"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="evolution-report">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="dispersal-mod-evolver-start">
+      <value value="0.5"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="version">
+      <value value="3"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="t-starting-frequency">
+      <value value="1"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="evolve-dispersal-density-dependance-2">
+      <value value="true"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="max-ticks">
+      <value value="1000000"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="geno-ids-print-interval">
+      <value value="10000"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="dispersal-dd-evolver-start">
+      <value value="0"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="random-density-immunity">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="new-formula">
+      <value value="true"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="new-wander">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="wander-sex-radius">
+      <value value="1"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="evolve-dispersal-density-dependance">
+      <value value="true"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="perc-mm3">
+      <value value="1"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="t-homozygous-lethality">
+      <value value="1"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="evolution-rate-max">
+      <value value="1000"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="patch-fidelity">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="dispersal-dd-evolver">
+      <value value="1"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="shuffle-patches-timing">
+      <value value="1"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="new-dispersal">
+      <value value="true"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="more-mice-in-pest">
+      <value value="50"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="shuffle-patches">
+      <value value="true"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="new-density-dependent-dispersal">
+      <value value="true"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="dispersal-prob-t">
+      <value value="1"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="new_death_a">
+      <value value="3"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="P_full_set">
+      <value value="0.001"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="density-fecundity-strength">
+      <value value="1"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="min-matings">
+      <value value="0"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="fecundity-random">
+      <value value="0"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="max-turtles-total">
+      <value value="0"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="only-juvenile-dispersal">
+      <value value="true"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="new_death_c">
+      <value value="1"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="evolve-dispersal">
+      <value value="true"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="limit-perc-mm3-mice">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="fecundity-global">
+      <value value="6"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="dispersal-cost">
+      <value value="0.3"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="t-effect">
+      <value value="&quot;dominant&quot;"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="death-radius">
+      <value value="1"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="drive">
+      <value value="0.9"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="evolution-rate-min">
+      <value value="5"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="cc-mean">
+      <value value="50"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="d-formula-start">
+      <value value="0"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="end-with-t?">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="cc-sd">
+      <value value="15"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="t-w-reporting">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="max-matings">
+      <value value="3"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="dispersal-dd-evolver-3">
+      <value value="150"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="P_evo_decrease">
+      <value value="true"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="mortality-report">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="report-litters">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="when-to-disperse">
+      <value value="0"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="old-wander-extra-wander-chance">
+      <value value="0.5"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="interval-report-local-densities">
+      <value value="100"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="dispersal-prob-w">
+      <value value="1"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="extended-disadvantage-adaptation">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="patch-density-randomness">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="new-wander-chance">
+      <value value="15"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="matings-alpha">
+      <value value="0"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="pest-chance">
+      <value value="0"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="patch-density-max">
+      <value value="10"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="density-death">
+      <value value="true"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="approach-alpha">
+      <value value="0"/>
+      <value value="0.01"/>
+      <value value="0.02"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="mate-death-prob">
+      <value value="0"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="track-migration">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="mate-radius">
+      <value value="1"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="disp-wander-times">
+      <value value="5"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="new-death">
+      <value value="true"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="mating-prob">
+      <value value="1"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="starting-number">
+      <value value="5000"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="loci">
+      <value value="2"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="random-min-matings">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="new_death_b">
+      <value value="15"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="death-prob">
+      <value value="0.25"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="report-litters-ticks">
+      <value value="100"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="cluster-patch-densities">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="new_death_d">
+      <value value="5"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="density-fecundity">
+      <value value="true"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="dispersal-mod-evolver">
+      <value value="1"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="smart-report-geno">
+      <value value="true"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="patches-report">
+      <value value="true"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="file-location">
+      <value value="&quot;/moto/ziab/users/jr3950/data/ABM/3.7.2-2linloci-1M-VarTauVarAlpha-LowerAlpha-SwitchTIntoSim-2/&quot;"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="patch-density-min">
+      <value value="1"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="density-death-prob">
+      <value value="10"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="P_full_exists">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="density-radius">
+      <value value="3"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="w-advantage">
+      <value value="0.85"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="report-migration-ticks">
+      <value value="100"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="pest-patch-lasting">
+      <value value="50"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="only_phenotypic_range">
+      <value value="true"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="density-evolver-max-turtles">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="dispersal-density-updated-after-each-dispersal">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="linear-formula-dispersal">
+      <value value="true"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="ticks-when-t-comes-in">
+      <value value="100000"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="negative-binomial-approach">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="cc-sd-incr">
+      <value value="15"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="incremental-shuffle">
+      <value value="true"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="kill_t_above">
+      <value value="1"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="start_with_mutation">
+      <value value="true"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="logit_disp_prob">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="d0-dividedby">
+      <value value="1000"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="d1-dividedby">
+      <value value="50000"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="P_inc_final">
+      <value value="0.001"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="P_inc_random">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="t-homozygous-fertile">
+      <value value="true"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="ptclassic">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="update-males-after-every-female">
+      <value value="true"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="reverse-who-comes-in">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="switch-turtles">
+      <value value="true"/>
+    </enumeratedValueSet>
+  </experiment>
+  <experiment name="3.7.2-2linloci-1M-VarTauVarAlpha-LowerAlpha-SwitchTIntoSim-3" repetitions="100" sequentialRunOrder="false" runMetricsEveryStep="false">
+    <setup>setup</setup>
+    <go>go</go>
+    <metric>count-w</metric>
+    <metric>count-t</metric>
+    <metric>count-tt</metric>
+    <metric>count-w + count-t + count-tt</metric>
+    <enumeratedValueSet variable="min-pxcor">
+      <value value="-5"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="min-pycor">
+      <value value="-5"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="max-pxcor">
+      <value value="4"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="max-pycor">
+      <value value="4"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="matings-report">
+      <value value="true"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="do-report-local-densities">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="dispersal-dd-evolver-2">
+      <value value="5"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="P_inc_set">
+      <value value="1"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="report-geno">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="random-patch-density">
+      <value value="true"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="t-homozygous-viability">
+      <value value="0"/>
+      <value value="0.25"/>
+      <value value="0.5"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="evolution-report">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="dispersal-mod-evolver-start">
+      <value value="0.5"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="version">
+      <value value="3"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="t-starting-frequency">
+      <value value="1"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="evolve-dispersal-density-dependance-2">
+      <value value="true"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="max-ticks">
+      <value value="1000000"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="geno-ids-print-interval">
+      <value value="10000"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="dispersal-dd-evolver-start">
+      <value value="0"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="random-density-immunity">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="new-formula">
+      <value value="true"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="new-wander">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="wander-sex-radius">
+      <value value="1"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="evolve-dispersal-density-dependance">
+      <value value="true"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="perc-mm3">
+      <value value="1"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="t-homozygous-lethality">
+      <value value="1"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="evolution-rate-max">
+      <value value="1000"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="patch-fidelity">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="dispersal-dd-evolver">
+      <value value="1"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="shuffle-patches-timing">
+      <value value="1"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="new-dispersal">
+      <value value="true"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="more-mice-in-pest">
+      <value value="50"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="shuffle-patches">
+      <value value="true"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="new-density-dependent-dispersal">
+      <value value="true"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="dispersal-prob-t">
+      <value value="1"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="new_death_a">
+      <value value="3"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="P_full_set">
+      <value value="0.001"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="density-fecundity-strength">
+      <value value="1"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="min-matings">
+      <value value="0"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="fecundity-random">
+      <value value="0"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="max-turtles-total">
+      <value value="0"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="only-juvenile-dispersal">
+      <value value="true"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="new_death_c">
+      <value value="1"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="evolve-dispersal">
+      <value value="true"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="limit-perc-mm3-mice">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="fecundity-global">
+      <value value="6"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="dispersal-cost">
+      <value value="0.3"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="t-effect">
+      <value value="&quot;dominant&quot;"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="death-radius">
+      <value value="1"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="drive">
+      <value value="0.9"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="evolution-rate-min">
+      <value value="5"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="cc-mean">
+      <value value="50"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="d-formula-start">
+      <value value="0"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="end-with-t?">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="cc-sd">
+      <value value="15"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="t-w-reporting">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="max-matings">
+      <value value="3"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="dispersal-dd-evolver-3">
+      <value value="150"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="P_evo_decrease">
+      <value value="true"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="mortality-report">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="report-litters">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="when-to-disperse">
+      <value value="0"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="old-wander-extra-wander-chance">
+      <value value="0.5"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="interval-report-local-densities">
+      <value value="100"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="dispersal-prob-w">
+      <value value="1"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="extended-disadvantage-adaptation">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="patch-density-randomness">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="new-wander-chance">
+      <value value="15"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="matings-alpha">
+      <value value="0"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="pest-chance">
+      <value value="0"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="patch-density-max">
+      <value value="10"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="density-death">
+      <value value="true"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="approach-alpha">
+      <value value="0"/>
+      <value value="0.01"/>
+      <value value="0.02"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="mate-death-prob">
+      <value value="0"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="track-migration">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="mate-radius">
+      <value value="1"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="disp-wander-times">
+      <value value="5"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="new-death">
+      <value value="true"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="mating-prob">
+      <value value="1"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="starting-number">
+      <value value="5000"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="loci">
+      <value value="2"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="random-min-matings">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="new_death_b">
+      <value value="15"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="death-prob">
+      <value value="0.25"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="report-litters-ticks">
+      <value value="100"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="cluster-patch-densities">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="new_death_d">
+      <value value="5"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="density-fecundity">
+      <value value="true"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="dispersal-mod-evolver">
+      <value value="1"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="smart-report-geno">
+      <value value="true"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="patches-report">
+      <value value="true"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="file-location">
+      <value value="&quot;/moto/ziab/users/jr3950/data/ABM/3.7.2-2linloci-1M-VarTauVarAlpha-LowerAlpha-SwitchTIntoSim-3/&quot;"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="patch-density-min">
+      <value value="1"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="density-death-prob">
+      <value value="10"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="P_full_exists">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="density-radius">
+      <value value="3"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="w-advantage">
+      <value value="0.85"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="report-migration-ticks">
+      <value value="100"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="pest-patch-lasting">
+      <value value="50"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="only_phenotypic_range">
+      <value value="true"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="density-evolver-max-turtles">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="dispersal-density-updated-after-each-dispersal">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="linear-formula-dispersal">
+      <value value="true"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="ticks-when-t-comes-in">
+      <value value="100000"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="negative-binomial-approach">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="cc-sd-incr">
+      <value value="15"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="incremental-shuffle">
+      <value value="true"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="kill_t_above">
+      <value value="1"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="start_with_mutation">
+      <value value="true"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="logit_disp_prob">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="d0-dividedby">
+      <value value="1000"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="d1-dividedby">
+      <value value="50000"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="P_inc_final">
+      <value value="0.001"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="P_inc_random">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="t-homozygous-fertile">
+      <value value="true"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="ptclassic">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="update-males-after-every-female">
+      <value value="true"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="reverse-who-comes-in">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="switch-turtles">
+      <value value="true"/>
+    </enumeratedValueSet>
+  </experiment>
+  <experiment name="3.7.2-1linloci-100K-VarTauVarAlpha-LowerAlpha-SwitchTIntoSim" repetitions="100" sequentialRunOrder="false" runMetricsEveryStep="false">
+    <setup>setup</setup>
+    <go>go</go>
+    <metric>count-w</metric>
+    <metric>count-t</metric>
+    <metric>count-tt</metric>
+    <metric>count-w + count-t + count-tt</metric>
+    <enumeratedValueSet variable="min-pxcor">
+      <value value="-5"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="min-pycor">
+      <value value="-5"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="max-pxcor">
+      <value value="4"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="max-pycor">
+      <value value="4"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="matings-report">
+      <value value="true"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="do-report-local-densities">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="dispersal-dd-evolver-2">
+      <value value="5"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="P_inc_set">
+      <value value="1"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="report-geno">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="random-patch-density">
+      <value value="true"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="t-homozygous-viability">
+      <value value="0"/>
+      <value value="0.25"/>
+      <value value="0.5"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="evolution-report">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="dispersal-mod-evolver-start">
+      <value value="0.5"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="version">
+      <value value="3"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="t-starting-frequency">
+      <value value="1"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="evolve-dispersal-density-dependance-2">
+      <value value="true"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="max-ticks">
+      <value value="100000"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="geno-ids-print-interval">
+      <value value="1000"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="dispersal-dd-evolver-start">
+      <value value="0"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="random-density-immunity">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="new-formula">
+      <value value="true"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="new-wander">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="wander-sex-radius">
+      <value value="1"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="evolve-dispersal-density-dependance">
+      <value value="true"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="perc-mm3">
+      <value value="1"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="t-homozygous-lethality">
+      <value value="1"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="evolution-rate-max">
+      <value value="1000"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="patch-fidelity">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="dispersal-dd-evolver">
+      <value value="1"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="shuffle-patches-timing">
+      <value value="1"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="new-dispersal">
+      <value value="true"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="more-mice-in-pest">
+      <value value="50"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="shuffle-patches">
+      <value value="true"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="new-density-dependent-dispersal">
+      <value value="true"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="dispersal-prob-t">
+      <value value="1"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="new_death_a">
+      <value value="3"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="P_full_set">
+      <value value="0.001"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="density-fecundity-strength">
+      <value value="1"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="min-matings">
+      <value value="0"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="fecundity-random">
+      <value value="0"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="max-turtles-total">
+      <value value="0"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="only-juvenile-dispersal">
+      <value value="true"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="new_death_c">
+      <value value="1"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="evolve-dispersal">
+      <value value="true"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="limit-perc-mm3-mice">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="fecundity-global">
+      <value value="6"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="dispersal-cost">
+      <value value="0.3"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="t-effect">
+      <value value="&quot;dominant&quot;"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="death-radius">
+      <value value="1"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="drive">
+      <value value="0.9"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="evolution-rate-min">
+      <value value="5"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="cc-mean">
+      <value value="50"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="d-formula-start">
+      <value value="0"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="end-with-t?">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="cc-sd">
+      <value value="15"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="t-w-reporting">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="max-matings">
+      <value value="3"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="dispersal-dd-evolver-3">
+      <value value="150"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="P_evo_decrease">
+      <value value="true"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="mortality-report">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="report-litters">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="when-to-disperse">
+      <value value="0"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="old-wander-extra-wander-chance">
+      <value value="0.5"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="interval-report-local-densities">
+      <value value="100"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="dispersal-prob-w">
+      <value value="1"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="extended-disadvantage-adaptation">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="patch-density-randomness">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="new-wander-chance">
+      <value value="15"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="matings-alpha">
+      <value value="0"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="pest-chance">
+      <value value="0"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="patch-density-max">
+      <value value="10"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="density-death">
+      <value value="true"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="approach-alpha">
+      <value value="0"/>
+      <value value="0.01"/>
+      <value value="0.02"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="mate-death-prob">
+      <value value="0"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="track-migration">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="mate-radius">
+      <value value="1"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="disp-wander-times">
+      <value value="5"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="new-death">
+      <value value="true"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="mating-prob">
+      <value value="1"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="starting-number">
+      <value value="5000"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="loci">
+      <value value="1"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="random-min-matings">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="new_death_b">
+      <value value="15"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="death-prob">
+      <value value="0.25"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="report-litters-ticks">
+      <value value="100"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="cluster-patch-densities">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="new_death_d">
+      <value value="5"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="density-fecundity">
+      <value value="true"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="dispersal-mod-evolver">
+      <value value="1"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="smart-report-geno">
+      <value value="true"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="patches-report">
+      <value value="true"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="file-location">
+      <value value="&quot;/moto/ziab/users/jr3950/data/ABM/3.7.2-1linloci-100K-VarTauVarAlpha-LowerAlpha-SwitchTIntoSim/&quot;"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="patch-density-min">
+      <value value="1"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="density-death-prob">
+      <value value="10"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="P_full_exists">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="density-radius">
+      <value value="3"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="w-advantage">
+      <value value="0.85"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="report-migration-ticks">
+      <value value="100"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="pest-patch-lasting">
+      <value value="50"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="only_phenotypic_range">
+      <value value="true"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="density-evolver-max-turtles">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="dispersal-density-updated-after-each-dispersal">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="linear-formula-dispersal">
+      <value value="true"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="ticks-when-t-comes-in">
+      <value value="10000"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="negative-binomial-approach">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="cc-sd-incr">
+      <value value="15"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="incremental-shuffle">
+      <value value="true"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="kill_t_above">
+      <value value="1"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="start_with_mutation">
+      <value value="true"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="logit_disp_prob">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="d0-dividedby">
+      <value value="1000"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="d1-dividedby">
+      <value value="50000"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="P_inc_final">
+      <value value="0.001"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="P_inc_random">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="t-homozygous-fertile">
+      <value value="true"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="ptclassic">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="update-males-after-every-female">
+      <value value="true"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="reverse-who-comes-in">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="switch-turtles">
+      <value value="true"/>
+    </enumeratedValueSet>
+  </experiment>
+  <experiment name="3.7.2-2linloci-1M-InfertileMalesVarAlpha-LowerAlpha-SwitchTIntoSim" repetitions="100" sequentialRunOrder="false" runMetricsEveryStep="false">
+    <setup>setup</setup>
+    <go>go</go>
+    <metric>count-w</metric>
+    <metric>count-t</metric>
+    <metric>count-tt</metric>
+    <metric>count-w + count-t + count-tt</metric>
+    <enumeratedValueSet variable="min-pxcor">
+      <value value="-5"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="min-pycor">
+      <value value="-5"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="max-pxcor">
+      <value value="4"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="max-pycor">
+      <value value="4"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="matings-report">
+      <value value="true"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="do-report-local-densities">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="dispersal-dd-evolver-2">
+      <value value="5"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="P_inc_set">
+      <value value="1"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="report-geno">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="random-patch-density">
+      <value value="true"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="t-homozygous-viability">
+      <value value="1"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="evolution-report">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="dispersal-mod-evolver-start">
+      <value value="0.5"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="version">
+      <value value="3"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="t-starting-frequency">
+      <value value="1"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="evolve-dispersal-density-dependance-2">
+      <value value="true"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="max-ticks">
+      <value value="1000000"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="geno-ids-print-interval">
+      <value value="10000"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="dispersal-dd-evolver-start">
+      <value value="0"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="random-density-immunity">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="new-formula">
+      <value value="true"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="new-wander">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="wander-sex-radius">
+      <value value="1"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="evolve-dispersal-density-dependance">
+      <value value="true"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="perc-mm3">
+      <value value="1"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="t-homozygous-lethality">
+      <value value="1"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="evolution-rate-max">
+      <value value="1000"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="patch-fidelity">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="dispersal-dd-evolver">
+      <value value="1"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="shuffle-patches-timing">
+      <value value="1"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="new-dispersal">
+      <value value="true"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="more-mice-in-pest">
+      <value value="50"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="shuffle-patches">
+      <value value="true"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="new-density-dependent-dispersal">
+      <value value="true"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="dispersal-prob-t">
+      <value value="1"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="new_death_a">
+      <value value="3"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="P_full_set">
+      <value value="0.001"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="density-fecundity-strength">
+      <value value="1"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="min-matings">
+      <value value="0"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="fecundity-random">
+      <value value="0"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="max-turtles-total">
+      <value value="0"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="only-juvenile-dispersal">
+      <value value="true"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="new_death_c">
+      <value value="1"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="evolve-dispersal">
+      <value value="true"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="limit-perc-mm3-mice">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="fecundity-global">
+      <value value="6"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="dispersal-cost">
+      <value value="0.3"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="t-effect">
+      <value value="&quot;dominant&quot;"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="death-radius">
+      <value value="1"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="drive">
+      <value value="0.9"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="evolution-rate-min">
+      <value value="5"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="cc-mean">
+      <value value="50"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="d-formula-start">
+      <value value="0"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="end-with-t?">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="cc-sd">
+      <value value="15"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="t-w-reporting">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="max-matings">
+      <value value="3"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="dispersal-dd-evolver-3">
+      <value value="150"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="P_evo_decrease">
+      <value value="true"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="mortality-report">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="report-litters">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="when-to-disperse">
+      <value value="0"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="old-wander-extra-wander-chance">
+      <value value="0.5"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="interval-report-local-densities">
+      <value value="100"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="dispersal-prob-w">
+      <value value="1"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="extended-disadvantage-adaptation">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="patch-density-randomness">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="new-wander-chance">
+      <value value="15"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="matings-alpha">
+      <value value="0"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="pest-chance">
+      <value value="0"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="patch-density-max">
+      <value value="10"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="density-death">
+      <value value="true"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="approach-alpha">
+      <value value="0"/>
+      <value value="0.01"/>
+      <value value="0.02"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="mate-death-prob">
+      <value value="0"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="track-migration">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="mate-radius">
+      <value value="1"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="disp-wander-times">
+      <value value="5"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="new-death">
+      <value value="true"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="mating-prob">
+      <value value="1"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="starting-number">
+      <value value="5000"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="loci">
+      <value value="2"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="random-min-matings">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="new_death_b">
+      <value value="15"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="death-prob">
+      <value value="0.25"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="report-litters-ticks">
+      <value value="100"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="cluster-patch-densities">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="new_death_d">
+      <value value="5"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="density-fecundity">
+      <value value="true"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="dispersal-mod-evolver">
+      <value value="1"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="smart-report-geno">
+      <value value="true"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="patches-report">
+      <value value="true"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="file-location">
+      <value value="&quot;/moto/ziab/users/jr3950/data/ABM/3.7.2-2linloci-1M-InfertileMalesVarAlpha-LowerAlpha-SwitchTIntoSim/&quot;"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="patch-density-min">
+      <value value="1"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="density-death-prob">
+      <value value="10"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="P_full_exists">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="density-radius">
+      <value value="3"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="w-advantage">
+      <value value="0.85"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="report-migration-ticks">
+      <value value="100"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="pest-patch-lasting">
+      <value value="50"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="only_phenotypic_range">
+      <value value="true"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="density-evolver-max-turtles">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="dispersal-density-updated-after-each-dispersal">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="linear-formula-dispersal">
+      <value value="true"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="ticks-when-t-comes-in">
+      <value value="100000"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="negative-binomial-approach">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="cc-sd-incr">
+      <value value="15"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="incremental-shuffle">
+      <value value="true"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="kill_t_above">
+      <value value="1"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="start_with_mutation">
+      <value value="true"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="logit_disp_prob">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="d0-dividedby">
+      <value value="1000"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="d1-dividedby">
+      <value value="50000"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="P_inc_final">
+      <value value="0.001"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="P_inc_random">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="t-homozygous-fertile">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="ptclassic">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="update-males-after-every-female">
+      <value value="true"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="reverse-who-comes-in">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="switch-turtles">
+      <value value="true"/>
+    </enumeratedValueSet>
+  </experiment>
+  <experiment name="3.7.2-1linloci-100K-VarDriveVarPtsperm-LowerAlpha-SwitchTIntoSim" repetitions="100" sequentialRunOrder="false" runMetricsEveryStep="false">
+    <setup>setup</setup>
+    <go>go</go>
+    <metric>count-w</metric>
+    <metric>count-t</metric>
+    <metric>count-tt</metric>
+    <metric>count-w + count-t + count-tt</metric>
+    <enumeratedValueSet variable="min-pxcor">
+      <value value="-5"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="min-pycor">
+      <value value="-5"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="max-pxcor">
+      <value value="4"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="max-pycor">
+      <value value="4"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="matings-report">
+      <value value="true"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="do-report-local-densities">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="dispersal-dd-evolver-2">
+      <value value="5"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="P_inc_set">
+      <value value="1"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="report-geno">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="random-patch-density">
+      <value value="true"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="t-homozygous-viability">
+      <value value="0"/>
+      <value value="1"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="evolution-report">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="dispersal-mod-evolver-start">
+      <value value="0.5"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="version">
+      <value value="3"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="t-starting-frequency">
+      <value value="1"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="evolve-dispersal-density-dependance-2">
+      <value value="true"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="max-ticks">
+      <value value="100000"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="geno-ids-print-interval">
+      <value value="1000"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="dispersal-dd-evolver-start">
+      <value value="0"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="random-density-immunity">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="new-formula">
+      <value value="true"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="new-wander">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="wander-sex-radius">
+      <value value="1"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="evolve-dispersal-density-dependance">
+      <value value="true"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="perc-mm3">
+      <value value="1"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="t-homozygous-lethality">
+      <value value="1"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="evolution-rate-max">
+      <value value="1000"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="patch-fidelity">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="dispersal-dd-evolver">
+      <value value="1"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="shuffle-patches-timing">
+      <value value="1"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="new-dispersal">
+      <value value="true"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="more-mice-in-pest">
+      <value value="50"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="shuffle-patches">
+      <value value="true"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="new-density-dependent-dispersal">
+      <value value="true"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="dispersal-prob-t">
+      <value value="1"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="new_death_a">
+      <value value="3"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="P_full_set">
+      <value value="0.001"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="density-fecundity-strength">
+      <value value="1"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="min-matings">
+      <value value="0"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="fecundity-random">
+      <value value="0"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="max-turtles-total">
+      <value value="0"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="only-juvenile-dispersal">
+      <value value="true"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="new_death_c">
+      <value value="1"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="evolve-dispersal">
+      <value value="true"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="limit-perc-mm3-mice">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="fecundity-global">
+      <value value="6"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="dispersal-cost">
+      <value value="0.3"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="t-effect">
+      <value value="&quot;dominant&quot;"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="death-radius">
+      <value value="1"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="drive">
+      <value value="0.5"/>
+      <value value="0.55"/>
+      <value value="0.6"/>
+      <value value="0.65"/>
+      <value value="0.7"/>
+      <value value="0.75"/>
+      <value value="0.8"/>
+      <value value="0.85"/>
+      <value value="0.9"/>
+      <value value="0.95"/>
+      <value value="1"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="evolution-rate-min">
+      <value value="5"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="cc-mean">
+      <value value="50"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="d-formula-start">
+      <value value="0"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="end-with-t?">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="cc-sd">
+      <value value="15"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="t-w-reporting">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="max-matings">
+      <value value="3"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="dispersal-dd-evolver-3">
+      <value value="150"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="P_evo_decrease">
+      <value value="true"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="mortality-report">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="report-litters">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="when-to-disperse">
+      <value value="0"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="old-wander-extra-wander-chance">
+      <value value="0.5"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="interval-report-local-densities">
+      <value value="100"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="dispersal-prob-w">
+      <value value="1"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="extended-disadvantage-adaptation">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="patch-density-randomness">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="new-wander-chance">
+      <value value="15"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="matings-alpha">
+      <value value="0"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="pest-chance">
+      <value value="0"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="patch-density-max">
+      <value value="10"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="density-death">
+      <value value="true"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="approach-alpha">
+      <value value="0.02"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="mate-death-prob">
+      <value value="0"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="track-migration">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="mate-radius">
+      <value value="1"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="disp-wander-times">
+      <value value="5"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="new-death">
+      <value value="true"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="mating-prob">
+      <value value="1"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="starting-number">
+      <value value="5000"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="loci">
+      <value value="1"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="random-min-matings">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="new_death_b">
+      <value value="15"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="death-prob">
+      <value value="0.25"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="report-litters-ticks">
+      <value value="100"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="cluster-patch-densities">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="new_death_d">
+      <value value="5"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="density-fecundity">
+      <value value="true"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="dispersal-mod-evolver">
+      <value value="1"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="smart-report-geno">
+      <value value="true"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="patches-report">
+      <value value="true"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="file-location">
+      <value value="&quot;/moto/ziab/users/jr3950/data/ABM/3.7.2-1linloci-100K-VarDriveVarPtsperm-LowerAlpha-SwitchTIntoSim/&quot;"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="patch-density-min">
+      <value value="1"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="density-death-prob">
+      <value value="10"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="P_full_exists">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="density-radius">
+      <value value="3"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="w-advantage">
+      <value value="0.5"/>
+      <value value="0.55"/>
+      <value value="0.6"/>
+      <value value="0.65"/>
+      <value value="0.7"/>
+      <value value="0.75"/>
+      <value value="0.8"/>
+      <value value="0.85"/>
+      <value value="0.9"/>
+      <value value="0.95"/>
+      <value value="1"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="report-migration-ticks">
+      <value value="100"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="pest-patch-lasting">
+      <value value="50"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="only_phenotypic_range">
+      <value value="true"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="density-evolver-max-turtles">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="dispersal-density-updated-after-each-dispersal">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="linear-formula-dispersal">
+      <value value="true"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="ticks-when-t-comes-in">
+      <value value="10000"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="negative-binomial-approach">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="cc-sd-incr">
+      <value value="15"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="incremental-shuffle">
+      <value value="true"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="kill_t_above">
+      <value value="1"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="start_with_mutation">
+      <value value="true"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="logit_disp_prob">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="d0-dividedby">
+      <value value="1000"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="d1-dividedby">
+      <value value="50000"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="P_inc_final">
+      <value value="0.001"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="P_inc_random">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="t-homozygous-fertile">
+      <value value="true"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="ptclassic">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="update-males-after-every-female">
+      <value value="true"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="reverse-who-comes-in">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="switch-turtles">
+      <value value="true"/>
+    </enumeratedValueSet>
+  </experiment>
+  <experiment name="3.7.2-1linloci-100K-VarDriveVarTau-SwitchTIntoSim" repetitions="100" sequentialRunOrder="false" runMetricsEveryStep="false">
+    <setup>setup</setup>
+    <go>go</go>
+    <metric>count-w</metric>
+    <metric>count-t</metric>
+    <metric>count-tt</metric>
+    <metric>count-w + count-t + count-tt</metric>
+    <enumeratedValueSet variable="min-pxcor">
+      <value value="-5"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="min-pycor">
+      <value value="-5"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="max-pxcor">
+      <value value="4"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="max-pycor">
+      <value value="4"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="matings-report">
+      <value value="true"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="do-report-local-densities">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="dispersal-dd-evolver-2">
+      <value value="5"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="P_inc_set">
+      <value value="1"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="report-geno">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="random-patch-density">
+      <value value="true"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="t-homozygous-viability">
+      <value value="0"/>
+      <value value="0.05"/>
+      <value value="0.1"/>
+      <value value="0.15"/>
+      <value value="0.2"/>
+      <value value="0.25"/>
+      <value value="0.3"/>
+      <value value="0.35"/>
+      <value value="0.4"/>
+      <value value="0.45"/>
+      <value value="0.5"/>
+      <value value="0.55"/>
+      <value value="0.6"/>
+      <value value="0.65"/>
+      <value value="0.7"/>
+      <value value="0.75"/>
+      <value value="0.8"/>
+      <value value="0.85"/>
+      <value value="0.9"/>
+      <value value="0.95"/>
+      <value value="1"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="evolution-report">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="dispersal-mod-evolver-start">
+      <value value="0.5"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="version">
+      <value value="3"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="t-starting-frequency">
+      <value value="1"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="evolve-dispersal-density-dependance-2">
+      <value value="true"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="max-ticks">
+      <value value="100000"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="geno-ids-print-interval">
+      <value value="1000"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="dispersal-dd-evolver-start">
+      <value value="0"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="random-density-immunity">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="new-formula">
+      <value value="true"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="new-wander">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="wander-sex-radius">
+      <value value="1"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="evolve-dispersal-density-dependance">
+      <value value="true"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="perc-mm3">
+      <value value="1"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="t-homozygous-lethality">
+      <value value="1"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="evolution-rate-max">
+      <value value="1000"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="patch-fidelity">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="dispersal-dd-evolver">
+      <value value="1"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="shuffle-patches-timing">
+      <value value="1"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="new-dispersal">
+      <value value="true"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="more-mice-in-pest">
+      <value value="50"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="shuffle-patches">
+      <value value="true"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="new-density-dependent-dispersal">
+      <value value="true"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="dispersal-prob-t">
+      <value value="1"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="new_death_a">
+      <value value="3"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="P_full_set">
+      <value value="0.001"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="density-fecundity-strength">
+      <value value="1"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="min-matings">
+      <value value="0"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="fecundity-random">
+      <value value="0"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="max-turtles-total">
+      <value value="0"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="only-juvenile-dispersal">
+      <value value="true"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="new_death_c">
+      <value value="1"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="evolve-dispersal">
+      <value value="true"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="limit-perc-mm3-mice">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="fecundity-global">
+      <value value="6"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="dispersal-cost">
+      <value value="0.3"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="t-effect">
+      <value value="&quot;dominant&quot;"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="death-radius">
+      <value value="1"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="drive">
+      <value value="0.5"/>
+      <value value="0.55"/>
+      <value value="0.6"/>
+      <value value="0.65"/>
+      <value value="0.7"/>
+      <value value="0.75"/>
+      <value value="0.8"/>
+      <value value="0.85"/>
+      <value value="0.9"/>
+      <value value="0.95"/>
+      <value value="1"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="evolution-rate-min">
+      <value value="5"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="cc-mean">
+      <value value="50"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="d-formula-start">
+      <value value="0"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="end-with-t?">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="cc-sd">
+      <value value="15"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="t-w-reporting">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="max-matings">
+      <value value="3"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="dispersal-dd-evolver-3">
+      <value value="150"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="P_evo_decrease">
+      <value value="true"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="mortality-report">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="report-litters">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="when-to-disperse">
+      <value value="0"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="old-wander-extra-wander-chance">
+      <value value="0.5"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="interval-report-local-densities">
+      <value value="100"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="dispersal-prob-w">
+      <value value="1"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="extended-disadvantage-adaptation">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="patch-density-randomness">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="new-wander-chance">
+      <value value="15"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="matings-alpha">
+      <value value="0"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="pest-chance">
+      <value value="0"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="patch-density-max">
+      <value value="10"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="density-death">
+      <value value="true"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="approach-alpha">
+      <value value="0"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="mate-death-prob">
+      <value value="0"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="track-migration">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="mate-radius">
+      <value value="1"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="disp-wander-times">
+      <value value="5"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="new-death">
+      <value value="true"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="mating-prob">
+      <value value="1"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="starting-number">
+      <value value="5000"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="loci">
+      <value value="1"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="random-min-matings">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="new_death_b">
+      <value value="15"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="death-prob">
+      <value value="0.25"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="report-litters-ticks">
+      <value value="100"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="cluster-patch-densities">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="new_death_d">
+      <value value="5"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="density-fecundity">
+      <value value="true"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="dispersal-mod-evolver">
+      <value value="1"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="smart-report-geno">
+      <value value="true"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="patches-report">
+      <value value="true"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="file-location">
+      <value value="&quot;/moto/ziab/users/jr3950/data/ABM/3.7.2-1linloci-100K-VarDriveVarTau-SwitchTIntoSim/&quot;"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="patch-density-min">
+      <value value="1"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="density-death-prob">
+      <value value="10"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="P_full_exists">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="density-radius">
+      <value value="3"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="w-advantage">
+      <value value="0.85"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="report-migration-ticks">
+      <value value="100"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="pest-patch-lasting">
+      <value value="50"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="only_phenotypic_range">
+      <value value="true"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="density-evolver-max-turtles">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="dispersal-density-updated-after-each-dispersal">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="linear-formula-dispersal">
+      <value value="true"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="ticks-when-t-comes-in">
+      <value value="10000"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="negative-binomial-approach">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="cc-sd-incr">
+      <value value="15"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="incremental-shuffle">
+      <value value="true"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="kill_t_above">
+      <value value="1"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="start_with_mutation">
+      <value value="true"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="logit_disp_prob">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="d0-dividedby">
+      <value value="1000"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="d1-dividedby">
+      <value value="50000"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="P_inc_final">
+      <value value="0.001"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="P_inc_random">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="t-homozygous-fertile">
+      <value value="true"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="ptclassic">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="update-males-after-every-female">
+      <value value="true"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="reverse-who-comes-in">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="switch-turtles">
+      <value value="true"/>
+    </enumeratedValueSet>
+  </experiment>
+  <experiment name="3.7.2-2linloci-1M-NatCond-Heterogeneity-LowerAlpha-SwitchTIntoSim" repetitions="100" sequentialRunOrder="false" runMetricsEveryStep="false">
+    <setup>setup</setup>
+    <go>go</go>
+    <metric>count-w</metric>
+    <metric>count-t</metric>
+    <metric>count-tt</metric>
+    <metric>count-w + count-t + count-tt</metric>
+    <enumeratedValueSet variable="min-pxcor">
+      <value value="-5"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="min-pycor">
+      <value value="-5"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="max-pxcor">
+      <value value="4"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="max-pycor">
+      <value value="4"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="matings-report">
+      <value value="true"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="do-report-local-densities">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="dispersal-dd-evolver-2">
+      <value value="5"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="P_inc_set">
+      <value value="1"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="report-geno">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="random-patch-density">
+      <value value="true"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="t-homozygous-viability">
+      <value value="0"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="evolution-report">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="dispersal-mod-evolver-start">
+      <value value="0.5"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="version">
+      <value value="3"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="t-starting-frequency">
+      <value value="1"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="evolve-dispersal-density-dependance-2">
+      <value value="true"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="max-ticks">
+      <value value="1000000"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="geno-ids-print-interval">
+      <value value="10000"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="dispersal-dd-evolver-start">
+      <value value="0"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="random-density-immunity">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="new-formula">
+      <value value="true"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="new-wander">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="wander-sex-radius">
+      <value value="1"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="evolve-dispersal-density-dependance">
+      <value value="true"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="perc-mm3">
+      <value value="1"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="t-homozygous-lethality">
+      <value value="1"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="evolution-rate-max">
+      <value value="1000"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="patch-fidelity">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="dispersal-dd-evolver">
+      <value value="1"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="shuffle-patches-timing">
+      <value value="1"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="new-dispersal">
+      <value value="true"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="more-mice-in-pest">
+      <value value="50"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="shuffle-patches">
+      <value value="true"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="new-density-dependent-dispersal">
+      <value value="true"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="dispersal-prob-t">
+      <value value="1"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="new_death_a">
+      <value value="3"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="P_full_set">
+      <value value="0.001"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="density-fecundity-strength">
+      <value value="1"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="min-matings">
+      <value value="0"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="fecundity-random">
+      <value value="0"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="max-turtles-total">
+      <value value="0"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="only-juvenile-dispersal">
+      <value value="true"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="new_death_c">
+      <value value="1"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="evolve-dispersal">
+      <value value="true"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="limit-perc-mm3-mice">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="fecundity-global">
+      <value value="6"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="dispersal-cost">
+      <value value="0.3"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="t-effect">
+      <value value="&quot;dominant&quot;"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="death-radius">
+      <value value="1"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="drive">
+      <value value="0.9"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="evolution-rate-min">
+      <value value="5"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="cc-mean">
+      <value value="50"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="d-formula-start">
+      <value value="0"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="end-with-t?">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="cc-sd">
+      <value value="0"/>
+      <value value="5"/>
+      <value value="10"/>
+      <value value="15"/>
+      <value value="20"/>
+      <value value="25"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="t-w-reporting">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="max-matings">
+      <value value="3"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="dispersal-dd-evolver-3">
+      <value value="150"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="P_evo_decrease">
+      <value value="true"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="mortality-report">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="report-litters">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="when-to-disperse">
+      <value value="0"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="old-wander-extra-wander-chance">
+      <value value="0.5"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="interval-report-local-densities">
+      <value value="100"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="dispersal-prob-w">
+      <value value="1"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="extended-disadvantage-adaptation">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="patch-density-randomness">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="new-wander-chance">
+      <value value="15"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="matings-alpha">
+      <value value="0"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="pest-chance">
+      <value value="0"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="patch-density-max">
+      <value value="10"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="density-death">
+      <value value="true"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="approach-alpha">
+      <value value="0.02"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="mate-death-prob">
+      <value value="0"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="track-migration">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="mate-radius">
+      <value value="1"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="disp-wander-times">
+      <value value="5"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="new-death">
+      <value value="true"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="mating-prob">
+      <value value="1"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="starting-number">
+      <value value="5000"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="loci">
+      <value value="2"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="random-min-matings">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="new_death_b">
+      <value value="15"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="death-prob">
+      <value value="0.25"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="report-litters-ticks">
+      <value value="100"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="cluster-patch-densities">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="new_death_d">
+      <value value="5"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="density-fecundity">
+      <value value="true"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="dispersal-mod-evolver">
+      <value value="1"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="smart-report-geno">
+      <value value="true"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="patches-report">
+      <value value="true"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="file-location">
+      <value value="&quot;/moto/ziab/users/jr3950/data/ABM/3.7.2-2linloci-1M-NatCond-Heterogeneity-LowerAlpha-SwitchTIntoSim/&quot;"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="patch-density-min">
+      <value value="1"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="density-death-prob">
+      <value value="10"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="P_full_exists">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="density-radius">
+      <value value="3"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="w-advantage">
+      <value value="0.85"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="report-migration-ticks">
+      <value value="100"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="pest-patch-lasting">
+      <value value="50"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="only_phenotypic_range">
+      <value value="true"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="density-evolver-max-turtles">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="dispersal-density-updated-after-each-dispersal">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="linear-formula-dispersal">
+      <value value="true"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="ticks-when-t-comes-in">
+      <value value="100000"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="negative-binomial-approach">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="cc-sd-incr">
+      <value value="0"/>
+      <value value="5"/>
+      <value value="10"/>
+      <value value="15"/>
+      <value value="20"/>
+      <value value="25"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="incremental-shuffle">
+      <value value="true"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="kill_t_above">
+      <value value="1"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="start_with_mutation">
+      <value value="true"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="logit_disp_prob">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="d0-dividedby">
+      <value value="1000"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="d1-dividedby">
+      <value value="50000"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="P_inc_final">
+      <value value="0.001"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="P_inc_random">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="t-homozygous-fertile">
+      <value value="true"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="ptclassic">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="update-males-after-every-female">
+      <value value="true"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="reverse-who-comes-in">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="switch-turtles">
+      <value value="true"/>
+    </enumeratedValueSet>
+  </experiment>
+  <experiment name="3.7.2-2linloci-1M-VarTauVarAlpha-LowerAlpha-SwitchTIntoSim-4" repetitions="100" sequentialRunOrder="false" runMetricsEveryStep="false">
+    <setup>setup</setup>
+    <go>go</go>
+    <metric>count-w</metric>
+    <metric>count-t</metric>
+    <metric>count-tt</metric>
+    <metric>count-w + count-t + count-tt</metric>
+    <enumeratedValueSet variable="min-pxcor">
+      <value value="-5"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="min-pycor">
+      <value value="-5"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="max-pxcor">
+      <value value="4"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="max-pycor">
+      <value value="4"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="matings-report">
+      <value value="true"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="do-report-local-densities">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="dispersal-dd-evolver-2">
+      <value value="5"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="P_inc_set">
+      <value value="1"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="report-geno">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="random-patch-density">
+      <value value="true"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="t-homozygous-viability">
+      <value value="0"/>
+      <value value="0.25"/>
+      <value value="0.5"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="evolution-report">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="dispersal-mod-evolver-start">
+      <value value="0.5"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="version">
+      <value value="3"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="t-starting-frequency">
+      <value value="1"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="evolve-dispersal-density-dependance-2">
+      <value value="true"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="max-ticks">
+      <value value="1000000"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="geno-ids-print-interval">
+      <value value="10000"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="dispersal-dd-evolver-start">
+      <value value="0"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="random-density-immunity">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="new-formula">
+      <value value="true"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="new-wander">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="wander-sex-radius">
+      <value value="1"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="evolve-dispersal-density-dependance">
+      <value value="true"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="perc-mm3">
+      <value value="1"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="t-homozygous-lethality">
+      <value value="1"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="evolution-rate-max">
+      <value value="1000"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="patch-fidelity">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="dispersal-dd-evolver">
+      <value value="1"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="shuffle-patches-timing">
+      <value value="1"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="new-dispersal">
+      <value value="true"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="more-mice-in-pest">
+      <value value="50"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="shuffle-patches">
+      <value value="true"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="new-density-dependent-dispersal">
+      <value value="true"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="dispersal-prob-t">
+      <value value="1"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="new_death_a">
+      <value value="3"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="P_full_set">
+      <value value="0.001"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="density-fecundity-strength">
+      <value value="1"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="min-matings">
+      <value value="0"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="fecundity-random">
+      <value value="0"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="max-turtles-total">
+      <value value="0"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="only-juvenile-dispersal">
+      <value value="true"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="new_death_c">
+      <value value="1"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="evolve-dispersal">
+      <value value="true"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="limit-perc-mm3-mice">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="fecundity-global">
+      <value value="6"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="dispersal-cost">
+      <value value="0.3"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="t-effect">
+      <value value="&quot;dominant&quot;"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="death-radius">
+      <value value="1"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="drive">
+      <value value="0.9"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="evolution-rate-min">
+      <value value="5"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="cc-mean">
+      <value value="50"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="d-formula-start">
+      <value value="0"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="end-with-t?">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="cc-sd">
+      <value value="15"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="t-w-reporting">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="max-matings">
+      <value value="3"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="dispersal-dd-evolver-3">
+      <value value="150"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="P_evo_decrease">
+      <value value="true"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="mortality-report">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="report-litters">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="when-to-disperse">
+      <value value="0"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="old-wander-extra-wander-chance">
+      <value value="0.5"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="interval-report-local-densities">
+      <value value="100"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="dispersal-prob-w">
+      <value value="1"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="extended-disadvantage-adaptation">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="patch-density-randomness">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="new-wander-chance">
+      <value value="15"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="matings-alpha">
+      <value value="0"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="pest-chance">
+      <value value="0"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="patch-density-max">
+      <value value="10"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="density-death">
+      <value value="true"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="approach-alpha">
+      <value value="0"/>
+      <value value="0.01"/>
+      <value value="0.02"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="mate-death-prob">
+      <value value="0"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="track-migration">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="mate-radius">
+      <value value="1"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="disp-wander-times">
+      <value value="5"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="new-death">
+      <value value="true"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="mating-prob">
+      <value value="1"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="starting-number">
+      <value value="5000"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="loci">
+      <value value="2"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="random-min-matings">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="new_death_b">
+      <value value="15"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="death-prob">
+      <value value="0.25"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="report-litters-ticks">
+      <value value="100"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="cluster-patch-densities">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="new_death_d">
+      <value value="5"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="density-fecundity">
+      <value value="true"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="dispersal-mod-evolver">
+      <value value="1"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="smart-report-geno">
+      <value value="true"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="patches-report">
+      <value value="true"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="file-location">
+      <value value="&quot;/moto/ziab/users/jr3950/data/ABM/3.7.2-2linloci-1M-VarTauVarAlpha-LowerAlpha-SwitchTIntoSim-4/&quot;"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="patch-density-min">
+      <value value="1"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="density-death-prob">
+      <value value="10"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="P_full_exists">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="density-radius">
+      <value value="3"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="w-advantage">
+      <value value="0.85"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="report-migration-ticks">
+      <value value="100"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="pest-patch-lasting">
+      <value value="50"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="only_phenotypic_range">
+      <value value="true"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="density-evolver-max-turtles">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="dispersal-density-updated-after-each-dispersal">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="linear-formula-dispersal">
+      <value value="true"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="ticks-when-t-comes-in">
+      <value value="100000"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="negative-binomial-approach">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="cc-sd-incr">
+      <value value="15"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="incremental-shuffle">
+      <value value="true"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="kill_t_above">
+      <value value="1"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="start_with_mutation">
+      <value value="true"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="logit_disp_prob">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="d0-dividedby">
+      <value value="1000"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="d1-dividedby">
+      <value value="50000"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="P_inc_final">
+      <value value="0.001"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="P_inc_random">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="t-homozygous-fertile">
+      <value value="true"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="ptclassic">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="update-males-after-every-female">
+      <value value="true"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="reverse-who-comes-in">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="switch-turtles">
+      <value value="true"/>
+    </enumeratedValueSet>
+  </experiment>
+  <experiment name="3.7.2-2linloci-1M-VarTauVarAlpha-LowerAlpha-SwitchTIntoSim-5" repetitions="100" sequentialRunOrder="false" runMetricsEveryStep="false">
+    <setup>setup</setup>
+    <go>go</go>
+    <metric>count-w</metric>
+    <metric>count-t</metric>
+    <metric>count-tt</metric>
+    <metric>count-w + count-t + count-tt</metric>
+    <enumeratedValueSet variable="min-pxcor">
+      <value value="-5"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="min-pycor">
+      <value value="-5"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="max-pxcor">
+      <value value="4"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="max-pycor">
+      <value value="4"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="matings-report">
+      <value value="true"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="do-report-local-densities">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="dispersal-dd-evolver-2">
+      <value value="5"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="P_inc_set">
+      <value value="1"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="report-geno">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="random-patch-density">
+      <value value="true"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="t-homozygous-viability">
+      <value value="0"/>
+      <value value="0.25"/>
+      <value value="0.5"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="evolution-report">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="dispersal-mod-evolver-start">
+      <value value="0.5"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="version">
+      <value value="3"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="t-starting-frequency">
+      <value value="1"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="evolve-dispersal-density-dependance-2">
+      <value value="true"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="max-ticks">
+      <value value="1000000"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="geno-ids-print-interval">
+      <value value="10000"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="dispersal-dd-evolver-start">
+      <value value="0"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="random-density-immunity">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="new-formula">
+      <value value="true"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="new-wander">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="wander-sex-radius">
+      <value value="1"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="evolve-dispersal-density-dependance">
+      <value value="true"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="perc-mm3">
+      <value value="1"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="t-homozygous-lethality">
+      <value value="1"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="evolution-rate-max">
+      <value value="1000"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="patch-fidelity">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="dispersal-dd-evolver">
+      <value value="1"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="shuffle-patches-timing">
+      <value value="1"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="new-dispersal">
+      <value value="true"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="more-mice-in-pest">
+      <value value="50"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="shuffle-patches">
+      <value value="true"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="new-density-dependent-dispersal">
+      <value value="true"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="dispersal-prob-t">
+      <value value="1"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="new_death_a">
+      <value value="3"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="P_full_set">
+      <value value="0.001"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="density-fecundity-strength">
+      <value value="1"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="min-matings">
+      <value value="0"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="fecundity-random">
+      <value value="0"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="max-turtles-total">
+      <value value="0"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="only-juvenile-dispersal">
+      <value value="true"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="new_death_c">
+      <value value="1"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="evolve-dispersal">
+      <value value="true"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="limit-perc-mm3-mice">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="fecundity-global">
+      <value value="6"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="dispersal-cost">
+      <value value="0.3"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="t-effect">
+      <value value="&quot;dominant&quot;"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="death-radius">
+      <value value="1"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="drive">
+      <value value="0.9"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="evolution-rate-min">
+      <value value="5"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="cc-mean">
+      <value value="50"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="d-formula-start">
+      <value value="0"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="end-with-t?">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="cc-sd">
+      <value value="15"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="t-w-reporting">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="max-matings">
+      <value value="3"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="dispersal-dd-evolver-3">
+      <value value="150"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="P_evo_decrease">
+      <value value="true"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="mortality-report">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="report-litters">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="when-to-disperse">
+      <value value="0"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="old-wander-extra-wander-chance">
+      <value value="0.5"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="interval-report-local-densities">
+      <value value="100"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="dispersal-prob-w">
+      <value value="1"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="extended-disadvantage-adaptation">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="patch-density-randomness">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="new-wander-chance">
+      <value value="15"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="matings-alpha">
+      <value value="0"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="pest-chance">
+      <value value="0"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="patch-density-max">
+      <value value="10"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="density-death">
+      <value value="true"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="approach-alpha">
+      <value value="0"/>
+      <value value="0.01"/>
+      <value value="0.02"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="mate-death-prob">
+      <value value="0"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="track-migration">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="mate-radius">
+      <value value="1"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="disp-wander-times">
+      <value value="5"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="new-death">
+      <value value="true"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="mating-prob">
+      <value value="1"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="starting-number">
+      <value value="5000"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="loci">
+      <value value="2"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="random-min-matings">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="new_death_b">
+      <value value="15"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="death-prob">
+      <value value="0.25"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="report-litters-ticks">
+      <value value="100"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="cluster-patch-densities">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="new_death_d">
+      <value value="5"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="density-fecundity">
+      <value value="true"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="dispersal-mod-evolver">
+      <value value="1"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="smart-report-geno">
+      <value value="true"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="patches-report">
+      <value value="true"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="file-location">
+      <value value="&quot;/moto/ziab/users/jr3950/data/ABM/3.7.2-2linloci-1M-VarTauVarAlpha-LowerAlpha-SwitchTIntoSim-5/&quot;"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="patch-density-min">
+      <value value="1"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="density-death-prob">
+      <value value="10"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="P_full_exists">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="density-radius">
+      <value value="3"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="w-advantage">
+      <value value="0.85"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="report-migration-ticks">
+      <value value="100"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="pest-patch-lasting">
+      <value value="50"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="only_phenotypic_range">
+      <value value="true"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="density-evolver-max-turtles">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="dispersal-density-updated-after-each-dispersal">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="linear-formula-dispersal">
+      <value value="true"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="ticks-when-t-comes-in">
+      <value value="100000"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="negative-binomial-approach">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="cc-sd-incr">
+      <value value="15"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="incremental-shuffle">
+      <value value="true"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="kill_t_above">
+      <value value="1"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="start_with_mutation">
+      <value value="true"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="logit_disp_prob">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="d0-dividedby">
+      <value value="1000"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="d1-dividedby">
+      <value value="50000"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="P_inc_final">
+      <value value="0.001"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="P_inc_random">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="t-homozygous-fertile">
+      <value value="true"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="ptclassic">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="update-males-after-every-female">
+      <value value="true"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="reverse-who-comes-in">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="switch-turtles">
+      <value value="true"/>
+    </enumeratedValueSet>
+  </experiment>
+  <experiment name="3.7.2-2linloci-1M-NatCond-Heterogeneity-LowerAlpha-SwitchTIntoSim-2" repetitions="100" sequentialRunOrder="false" runMetricsEveryStep="false">
+    <setup>setup</setup>
+    <go>go</go>
+    <metric>count-w</metric>
+    <metric>count-t</metric>
+    <metric>count-tt</metric>
+    <metric>count-w + count-t + count-tt</metric>
+    <enumeratedValueSet variable="min-pxcor">
+      <value value="-5"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="min-pycor">
+      <value value="-5"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="max-pxcor">
+      <value value="4"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="max-pycor">
+      <value value="4"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="matings-report">
+      <value value="true"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="do-report-local-densities">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="dispersal-dd-evolver-2">
+      <value value="5"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="P_inc_set">
+      <value value="1"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="report-geno">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="random-patch-density">
+      <value value="true"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="t-homozygous-viability">
+      <value value="0"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="evolution-report">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="dispersal-mod-evolver-start">
+      <value value="0.5"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="version">
+      <value value="3"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="t-starting-frequency">
+      <value value="1"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="evolve-dispersal-density-dependance-2">
+      <value value="true"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="max-ticks">
+      <value value="1000000"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="geno-ids-print-interval">
+      <value value="10000"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="dispersal-dd-evolver-start">
+      <value value="0"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="random-density-immunity">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="new-formula">
+      <value value="true"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="new-wander">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="wander-sex-radius">
+      <value value="1"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="evolve-dispersal-density-dependance">
+      <value value="true"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="perc-mm3">
+      <value value="1"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="t-homozygous-lethality">
+      <value value="1"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="evolution-rate-max">
+      <value value="1000"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="patch-fidelity">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="dispersal-dd-evolver">
+      <value value="1"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="shuffle-patches-timing">
+      <value value="1"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="new-dispersal">
+      <value value="true"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="more-mice-in-pest">
+      <value value="50"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="shuffle-patches">
+      <value value="true"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="new-density-dependent-dispersal">
+      <value value="true"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="dispersal-prob-t">
+      <value value="1"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="new_death_a">
+      <value value="3"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="P_full_set">
+      <value value="0.001"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="density-fecundity-strength">
+      <value value="1"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="min-matings">
+      <value value="0"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="fecundity-random">
+      <value value="0"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="max-turtles-total">
+      <value value="0"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="only-juvenile-dispersal">
+      <value value="true"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="new_death_c">
+      <value value="1"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="evolve-dispersal">
+      <value value="true"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="limit-perc-mm3-mice">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="fecundity-global">
+      <value value="6"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="dispersal-cost">
+      <value value="0.3"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="t-effect">
+      <value value="&quot;dominant&quot;"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="death-radius">
+      <value value="1"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="drive">
+      <value value="0.9"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="evolution-rate-min">
+      <value value="5"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="cc-mean">
+      <value value="50"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="d-formula-start">
+      <value value="0"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="end-with-t?">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="cc-sd">
+      <value value="0"/>
+      <value value="5"/>
+      <value value="10"/>
+      <value value="15"/>
+      <value value="20"/>
+      <value value="25"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="t-w-reporting">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="max-matings">
+      <value value="3"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="dispersal-dd-evolver-3">
+      <value value="150"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="P_evo_decrease">
+      <value value="true"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="mortality-report">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="report-litters">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="when-to-disperse">
+      <value value="0"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="old-wander-extra-wander-chance">
+      <value value="0.5"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="interval-report-local-densities">
+      <value value="100"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="dispersal-prob-w">
+      <value value="1"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="extended-disadvantage-adaptation">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="patch-density-randomness">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="new-wander-chance">
+      <value value="15"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="matings-alpha">
+      <value value="0"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="pest-chance">
+      <value value="0"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="patch-density-max">
+      <value value="10"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="density-death">
+      <value value="true"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="approach-alpha">
+      <value value="0.02"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="mate-death-prob">
+      <value value="0"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="track-migration">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="mate-radius">
+      <value value="1"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="disp-wander-times">
+      <value value="5"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="new-death">
+      <value value="true"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="mating-prob">
+      <value value="1"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="starting-number">
+      <value value="5000"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="loci">
+      <value value="2"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="random-min-matings">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="new_death_b">
+      <value value="15"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="death-prob">
+      <value value="0.25"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="report-litters-ticks">
+      <value value="100"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="cluster-patch-densities">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="new_death_d">
+      <value value="5"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="density-fecundity">
+      <value value="true"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="dispersal-mod-evolver">
+      <value value="1"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="smart-report-geno">
+      <value value="true"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="patches-report">
+      <value value="true"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="file-location">
+      <value value="&quot;/moto/ziab/users/jr3950/data/ABM/3.7.2-2linloci-1M-NatCond-Heterogeneity-LowerAlpha-SwitchTIntoSim-2/&quot;"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="patch-density-min">
+      <value value="1"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="density-death-prob">
+      <value value="10"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="P_full_exists">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="density-radius">
+      <value value="3"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="w-advantage">
+      <value value="0.85"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="report-migration-ticks">
+      <value value="100"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="pest-patch-lasting">
+      <value value="50"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="only_phenotypic_range">
+      <value value="true"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="density-evolver-max-turtles">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="dispersal-density-updated-after-each-dispersal">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="linear-formula-dispersal">
+      <value value="true"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="ticks-when-t-comes-in">
+      <value value="100000"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="negative-binomial-approach">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="cc-sd-incr">
+      <value value="0"/>
+      <value value="5"/>
+      <value value="10"/>
+      <value value="15"/>
+      <value value="20"/>
+      <value value="25"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="incremental-shuffle">
+      <value value="true"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="kill_t_above">
+      <value value="1"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="start_with_mutation">
+      <value value="true"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="logit_disp_prob">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="d0-dividedby">
+      <value value="1000"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="d1-dividedby">
+      <value value="50000"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="P_inc_final">
+      <value value="0.001"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="P_inc_random">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="t-homozygous-fertile">
+      <value value="true"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="ptclassic">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="update-males-after-every-female">
+      <value value="true"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="reverse-who-comes-in">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="switch-turtles">
+      <value value="true"/>
+    </enumeratedValueSet>
+  </experiment>
+  <experiment name="3.7.2-2linloci-1M-NatCond-Heterogeneity-LowerAlpha-SwitchTIntoSim-3" repetitions="100" sequentialRunOrder="false" runMetricsEveryStep="false">
+    <setup>setup</setup>
+    <go>go</go>
+    <metric>count-w</metric>
+    <metric>count-t</metric>
+    <metric>count-tt</metric>
+    <metric>count-w + count-t + count-tt</metric>
+    <enumeratedValueSet variable="min-pxcor">
+      <value value="-5"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="min-pycor">
+      <value value="-5"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="max-pxcor">
+      <value value="4"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="max-pycor">
+      <value value="4"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="matings-report">
+      <value value="true"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="do-report-local-densities">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="dispersal-dd-evolver-2">
+      <value value="5"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="P_inc_set">
+      <value value="1"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="report-geno">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="random-patch-density">
+      <value value="true"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="t-homozygous-viability">
+      <value value="0"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="evolution-report">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="dispersal-mod-evolver-start">
+      <value value="0.5"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="version">
+      <value value="3"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="t-starting-frequency">
+      <value value="1"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="evolve-dispersal-density-dependance-2">
+      <value value="true"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="max-ticks">
+      <value value="1000000"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="geno-ids-print-interval">
+      <value value="10000"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="dispersal-dd-evolver-start">
+      <value value="0"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="random-density-immunity">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="new-formula">
+      <value value="true"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="new-wander">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="wander-sex-radius">
+      <value value="1"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="evolve-dispersal-density-dependance">
+      <value value="true"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="perc-mm3">
+      <value value="1"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="t-homozygous-lethality">
+      <value value="1"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="evolution-rate-max">
+      <value value="1000"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="patch-fidelity">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="dispersal-dd-evolver">
+      <value value="1"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="shuffle-patches-timing">
+      <value value="1"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="new-dispersal">
+      <value value="true"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="more-mice-in-pest">
+      <value value="50"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="shuffle-patches">
+      <value value="true"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="new-density-dependent-dispersal">
+      <value value="true"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="dispersal-prob-t">
+      <value value="1"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="new_death_a">
+      <value value="3"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="P_full_set">
+      <value value="0.001"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="density-fecundity-strength">
+      <value value="1"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="min-matings">
+      <value value="0"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="fecundity-random">
+      <value value="0"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="max-turtles-total">
+      <value value="0"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="only-juvenile-dispersal">
+      <value value="true"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="new_death_c">
+      <value value="1"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="evolve-dispersal">
+      <value value="true"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="limit-perc-mm3-mice">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="fecundity-global">
+      <value value="6"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="dispersal-cost">
+      <value value="0.3"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="t-effect">
+      <value value="&quot;dominant&quot;"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="death-radius">
+      <value value="1"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="drive">
+      <value value="0.9"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="evolution-rate-min">
+      <value value="5"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="cc-mean">
+      <value value="50"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="d-formula-start">
+      <value value="0"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="end-with-t?">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="cc-sd">
+      <value value="0"/>
+      <value value="5"/>
+      <value value="10"/>
+      <value value="15"/>
+      <value value="20"/>
+      <value value="25"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="t-w-reporting">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="max-matings">
+      <value value="3"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="dispersal-dd-evolver-3">
+      <value value="150"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="P_evo_decrease">
+      <value value="true"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="mortality-report">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="report-litters">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="when-to-disperse">
+      <value value="0"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="old-wander-extra-wander-chance">
+      <value value="0.5"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="interval-report-local-densities">
+      <value value="100"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="dispersal-prob-w">
+      <value value="1"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="extended-disadvantage-adaptation">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="patch-density-randomness">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="new-wander-chance">
+      <value value="15"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="matings-alpha">
+      <value value="0"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="pest-chance">
+      <value value="0"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="patch-density-max">
+      <value value="10"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="density-death">
+      <value value="true"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="approach-alpha">
+      <value value="0.02"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="mate-death-prob">
+      <value value="0"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="track-migration">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="mate-radius">
+      <value value="1"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="disp-wander-times">
+      <value value="5"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="new-death">
+      <value value="true"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="mating-prob">
+      <value value="1"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="starting-number">
+      <value value="5000"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="loci">
+      <value value="2"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="random-min-matings">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="new_death_b">
+      <value value="15"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="death-prob">
+      <value value="0.25"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="report-litters-ticks">
+      <value value="100"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="cluster-patch-densities">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="new_death_d">
+      <value value="5"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="density-fecundity">
+      <value value="true"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="dispersal-mod-evolver">
+      <value value="1"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="smart-report-geno">
+      <value value="true"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="patches-report">
+      <value value="true"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="file-location">
+      <value value="&quot;/moto/ziab/users/jr3950/data/ABM/3.7.2-2linloci-1M-NatCond-Heterogeneity-LowerAlpha-SwitchTIntoSim-3/&quot;"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="patch-density-min">
+      <value value="1"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="density-death-prob">
+      <value value="10"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="P_full_exists">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="density-radius">
+      <value value="3"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="w-advantage">
+      <value value="0.85"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="report-migration-ticks">
+      <value value="100"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="pest-patch-lasting">
+      <value value="50"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="only_phenotypic_range">
+      <value value="true"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="density-evolver-max-turtles">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="dispersal-density-updated-after-each-dispersal">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="linear-formula-dispersal">
+      <value value="true"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="ticks-when-t-comes-in">
+      <value value="100000"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="negative-binomial-approach">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="cc-sd-incr">
+      <value value="0"/>
+      <value value="5"/>
+      <value value="10"/>
+      <value value="15"/>
+      <value value="20"/>
+      <value value="25"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="incremental-shuffle">
+      <value value="true"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="kill_t_above">
+      <value value="1"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="start_with_mutation">
+      <value value="true"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="logit_disp_prob">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="d0-dividedby">
+      <value value="1000"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="d1-dividedby">
+      <value value="50000"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="P_inc_final">
+      <value value="0.001"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="P_inc_random">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="t-homozygous-fertile">
+      <value value="true"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="ptclassic">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="update-males-after-every-female">
+      <value value="true"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="reverse-who-comes-in">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="switch-turtles">
+      <value value="true"/>
+    </enumeratedValueSet>
+  </experiment>
+  <experiment name="3.7.2-1linloci-100K-VarDriveVarPtsperm-LowerAlpha-SwitchTIntoSim-2" repetitions="100" sequentialRunOrder="false" runMetricsEveryStep="false">
+    <setup>setup</setup>
+    <go>go</go>
+    <metric>count-w</metric>
+    <metric>count-t</metric>
+    <metric>count-tt</metric>
+    <metric>count-w + count-t + count-tt</metric>
+    <enumeratedValueSet variable="min-pxcor">
+      <value value="-5"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="min-pycor">
+      <value value="-5"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="max-pxcor">
+      <value value="4"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="max-pycor">
+      <value value="4"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="matings-report">
+      <value value="true"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="do-report-local-densities">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="dispersal-dd-evolver-2">
+      <value value="5"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="P_inc_set">
+      <value value="1"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="report-geno">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="random-patch-density">
+      <value value="true"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="t-homozygous-viability">
+      <value value="0"/>
+      <value value="1"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="evolution-report">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="dispersal-mod-evolver-start">
+      <value value="0.5"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="version">
+      <value value="3"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="t-starting-frequency">
+      <value value="1"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="evolve-dispersal-density-dependance-2">
+      <value value="true"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="max-ticks">
+      <value value="100000"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="geno-ids-print-interval">
+      <value value="1000"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="dispersal-dd-evolver-start">
+      <value value="0"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="random-density-immunity">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="new-formula">
+      <value value="true"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="new-wander">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="wander-sex-radius">
+      <value value="1"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="evolve-dispersal-density-dependance">
+      <value value="true"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="perc-mm3">
+      <value value="1"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="t-homozygous-lethality">
+      <value value="1"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="evolution-rate-max">
+      <value value="1000"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="patch-fidelity">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="dispersal-dd-evolver">
+      <value value="1"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="shuffle-patches-timing">
+      <value value="1"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="new-dispersal">
+      <value value="true"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="more-mice-in-pest">
+      <value value="50"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="shuffle-patches">
+      <value value="true"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="new-density-dependent-dispersal">
+      <value value="true"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="dispersal-prob-t">
+      <value value="1"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="new_death_a">
+      <value value="3"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="P_full_set">
+      <value value="0.001"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="density-fecundity-strength">
+      <value value="1"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="min-matings">
+      <value value="0"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="fecundity-random">
+      <value value="0"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="max-turtles-total">
+      <value value="0"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="only-juvenile-dispersal">
+      <value value="true"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="new_death_c">
+      <value value="1"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="evolve-dispersal">
+      <value value="true"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="limit-perc-mm3-mice">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="fecundity-global">
+      <value value="6"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="dispersal-cost">
+      <value value="0.3"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="t-effect">
+      <value value="&quot;dominant&quot;"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="death-radius">
+      <value value="1"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="drive">
+      <value value="0.5"/>
+      <value value="0.55"/>
+      <value value="0.6"/>
+      <value value="0.65"/>
+      <value value="0.7"/>
+      <value value="0.75"/>
+      <value value="0.8"/>
+      <value value="0.85"/>
+      <value value="0.9"/>
+      <value value="0.95"/>
+      <value value="1"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="evolution-rate-min">
+      <value value="5"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="cc-mean">
+      <value value="50"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="d-formula-start">
+      <value value="0"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="end-with-t?">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="cc-sd">
+      <value value="15"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="t-w-reporting">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="max-matings">
+      <value value="3"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="dispersal-dd-evolver-3">
+      <value value="150"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="P_evo_decrease">
+      <value value="true"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="mortality-report">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="report-litters">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="when-to-disperse">
+      <value value="0"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="old-wander-extra-wander-chance">
+      <value value="0.5"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="interval-report-local-densities">
+      <value value="100"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="dispersal-prob-w">
+      <value value="1"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="extended-disadvantage-adaptation">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="patch-density-randomness">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="new-wander-chance">
+      <value value="15"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="matings-alpha">
+      <value value="0"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="pest-chance">
+      <value value="0"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="patch-density-max">
+      <value value="10"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="density-death">
+      <value value="true"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="approach-alpha">
+      <value value="0.02"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="mate-death-prob">
+      <value value="0"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="track-migration">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="mate-radius">
+      <value value="1"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="disp-wander-times">
+      <value value="5"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="new-death">
+      <value value="true"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="mating-prob">
+      <value value="1"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="starting-number">
+      <value value="5000"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="loci">
+      <value value="1"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="random-min-matings">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="new_death_b">
+      <value value="15"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="death-prob">
+      <value value="0.25"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="report-litters-ticks">
+      <value value="100"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="cluster-patch-densities">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="new_death_d">
+      <value value="5"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="density-fecundity">
+      <value value="true"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="dispersal-mod-evolver">
+      <value value="1"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="smart-report-geno">
+      <value value="true"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="patches-report">
+      <value value="true"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="file-location">
+      <value value="&quot;/moto/ziab/users/jr3950/data/ABM/3.7.2-1linloci-100K-VarDriveVarPtsperm-LowerAlpha-SwitchTIntoSim-2/&quot;"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="patch-density-min">
+      <value value="1"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="density-death-prob">
+      <value value="10"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="P_full_exists">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="density-radius">
+      <value value="3"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="w-advantage">
+      <value value="0.5"/>
+      <value value="0.55"/>
+      <value value="0.6"/>
+      <value value="0.65"/>
+      <value value="0.7"/>
+      <value value="0.75"/>
+      <value value="0.8"/>
+      <value value="0.85"/>
+      <value value="0.9"/>
+      <value value="0.95"/>
+      <value value="1"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="report-migration-ticks">
+      <value value="100"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="pest-patch-lasting">
+      <value value="50"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="only_phenotypic_range">
+      <value value="true"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="density-evolver-max-turtles">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="dispersal-density-updated-after-each-dispersal">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="linear-formula-dispersal">
+      <value value="true"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="ticks-when-t-comes-in">
+      <value value="10000"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="negative-binomial-approach">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="cc-sd-incr">
+      <value value="15"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="incremental-shuffle">
+      <value value="true"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="kill_t_above">
+      <value value="1"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="start_with_mutation">
+      <value value="true"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="logit_disp_prob">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="d0-dividedby">
+      <value value="1000"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="d1-dividedby">
+      <value value="50000"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="P_inc_final">
+      <value value="0.001"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="P_inc_random">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="t-homozygous-fertile">
+      <value value="true"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="ptclassic">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="update-males-after-every-female">
+      <value value="true"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="reverse-who-comes-in">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="switch-turtles">
+      <value value="true"/>
+    </enumeratedValueSet>
+  </experiment>
+  <experiment name="3.7.2-1linloci-100K-VarDriveVarTau-SwitchTIntoSim-2" repetitions="100" sequentialRunOrder="false" runMetricsEveryStep="false">
+    <setup>setup</setup>
+    <go>go</go>
+    <metric>count-w</metric>
+    <metric>count-t</metric>
+    <metric>count-tt</metric>
+    <metric>count-w + count-t + count-tt</metric>
+    <enumeratedValueSet variable="min-pxcor">
+      <value value="-5"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="min-pycor">
+      <value value="-5"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="max-pxcor">
+      <value value="4"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="max-pycor">
+      <value value="4"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="matings-report">
+      <value value="true"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="do-report-local-densities">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="dispersal-dd-evolver-2">
+      <value value="5"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="P_inc_set">
+      <value value="1"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="report-geno">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="random-patch-density">
+      <value value="true"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="t-homozygous-viability">
+      <value value="0"/>
+      <value value="0.05"/>
+      <value value="0.1"/>
+      <value value="0.15"/>
+      <value value="0.2"/>
+      <value value="0.25"/>
+      <value value="0.3"/>
+      <value value="0.35"/>
+      <value value="0.4"/>
+      <value value="0.45"/>
+      <value value="0.5"/>
+      <value value="0.55"/>
+      <value value="0.6"/>
+      <value value="0.65"/>
+      <value value="0.7"/>
+      <value value="0.75"/>
+      <value value="0.8"/>
+      <value value="0.85"/>
+      <value value="0.9"/>
+      <value value="0.95"/>
+      <value value="1"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="evolution-report">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="dispersal-mod-evolver-start">
+      <value value="0.5"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="version">
+      <value value="3"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="t-starting-frequency">
+      <value value="1"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="evolve-dispersal-density-dependance-2">
+      <value value="true"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="max-ticks">
+      <value value="100000"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="geno-ids-print-interval">
+      <value value="1000"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="dispersal-dd-evolver-start">
+      <value value="0"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="random-density-immunity">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="new-formula">
+      <value value="true"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="new-wander">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="wander-sex-radius">
+      <value value="1"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="evolve-dispersal-density-dependance">
+      <value value="true"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="perc-mm3">
+      <value value="1"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="t-homozygous-lethality">
+      <value value="1"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="evolution-rate-max">
+      <value value="1000"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="patch-fidelity">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="dispersal-dd-evolver">
+      <value value="1"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="shuffle-patches-timing">
+      <value value="1"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="new-dispersal">
+      <value value="true"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="more-mice-in-pest">
+      <value value="50"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="shuffle-patches">
+      <value value="true"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="new-density-dependent-dispersal">
+      <value value="true"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="dispersal-prob-t">
+      <value value="1"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="new_death_a">
+      <value value="3"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="P_full_set">
+      <value value="0.001"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="density-fecundity-strength">
+      <value value="1"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="min-matings">
+      <value value="0"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="fecundity-random">
+      <value value="0"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="max-turtles-total">
+      <value value="0"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="only-juvenile-dispersal">
+      <value value="true"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="new_death_c">
+      <value value="1"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="evolve-dispersal">
+      <value value="true"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="limit-perc-mm3-mice">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="fecundity-global">
+      <value value="6"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="dispersal-cost">
+      <value value="0.3"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="t-effect">
+      <value value="&quot;dominant&quot;"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="death-radius">
+      <value value="1"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="drive">
+      <value value="0.5"/>
+      <value value="0.55"/>
+      <value value="0.6"/>
+      <value value="0.65"/>
+      <value value="0.7"/>
+      <value value="0.75"/>
+      <value value="0.8"/>
+      <value value="0.85"/>
+      <value value="0.9"/>
+      <value value="0.95"/>
+      <value value="1"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="evolution-rate-min">
+      <value value="5"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="cc-mean">
+      <value value="50"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="d-formula-start">
+      <value value="0"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="end-with-t?">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="cc-sd">
+      <value value="15"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="t-w-reporting">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="max-matings">
+      <value value="3"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="dispersal-dd-evolver-3">
+      <value value="150"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="P_evo_decrease">
+      <value value="true"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="mortality-report">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="report-litters">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="when-to-disperse">
+      <value value="0"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="old-wander-extra-wander-chance">
+      <value value="0.5"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="interval-report-local-densities">
+      <value value="100"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="dispersal-prob-w">
+      <value value="1"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="extended-disadvantage-adaptation">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="patch-density-randomness">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="new-wander-chance">
+      <value value="15"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="matings-alpha">
+      <value value="0"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="pest-chance">
+      <value value="0"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="patch-density-max">
+      <value value="10"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="density-death">
+      <value value="true"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="approach-alpha">
+      <value value="0"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="mate-death-prob">
+      <value value="0"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="track-migration">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="mate-radius">
+      <value value="1"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="disp-wander-times">
+      <value value="5"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="new-death">
+      <value value="true"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="mating-prob">
+      <value value="1"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="starting-number">
+      <value value="5000"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="loci">
+      <value value="1"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="random-min-matings">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="new_death_b">
+      <value value="15"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="death-prob">
+      <value value="0.25"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="report-litters-ticks">
+      <value value="100"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="cluster-patch-densities">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="new_death_d">
+      <value value="5"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="density-fecundity">
+      <value value="true"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="dispersal-mod-evolver">
+      <value value="1"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="smart-report-geno">
+      <value value="true"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="patches-report">
+      <value value="true"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="file-location">
+      <value value="&quot;/moto/ziab/users/jr3950/data/ABM/3.7.2-1linloci-100K-VarDriveVarTau-SwitchTIntoSim-2/&quot;"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="patch-density-min">
+      <value value="1"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="density-death-prob">
+      <value value="10"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="P_full_exists">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="density-radius">
+      <value value="3"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="w-advantage">
+      <value value="0.85"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="report-migration-ticks">
+      <value value="100"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="pest-patch-lasting">
+      <value value="50"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="only_phenotypic_range">
+      <value value="true"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="density-evolver-max-turtles">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="dispersal-density-updated-after-each-dispersal">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="linear-formula-dispersal">
+      <value value="true"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="ticks-when-t-comes-in">
+      <value value="10000"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="negative-binomial-approach">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="cc-sd-incr">
+      <value value="15"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="incremental-shuffle">
+      <value value="true"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="kill_t_above">
+      <value value="1"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="start_with_mutation">
+      <value value="true"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="logit_disp_prob">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="d0-dividedby">
+      <value value="1000"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="d1-dividedby">
+      <value value="50000"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="P_inc_final">
+      <value value="0.001"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="P_inc_random">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="t-homozygous-fertile">
+      <value value="true"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="ptclassic">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="update-males-after-every-female">
+      <value value="true"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="reverse-who-comes-in">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="switch-turtles">
+      <value value="true"/>
+    </enumeratedValueSet>
+  </experiment>
+  <experiment name="3.7.2-2linloci-1M-InfertileMalesVarAlpha-LowerAlpha-SwitchTIntoSim-2" repetitions="100" sequentialRunOrder="false" runMetricsEveryStep="false">
+    <setup>setup</setup>
+    <go>go</go>
+    <metric>count-w</metric>
+    <metric>count-t</metric>
+    <metric>count-tt</metric>
+    <metric>count-w + count-t + count-tt</metric>
+    <enumeratedValueSet variable="min-pxcor">
+      <value value="-5"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="min-pycor">
+      <value value="-5"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="max-pxcor">
+      <value value="4"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="max-pycor">
+      <value value="4"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="matings-report">
+      <value value="true"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="do-report-local-densities">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="dispersal-dd-evolver-2">
+      <value value="5"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="P_inc_set">
+      <value value="1"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="report-geno">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="random-patch-density">
+      <value value="true"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="t-homozygous-viability">
+      <value value="1"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="evolution-report">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="dispersal-mod-evolver-start">
+      <value value="0.5"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="version">
+      <value value="3"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="t-starting-frequency">
+      <value value="1"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="evolve-dispersal-density-dependance-2">
+      <value value="true"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="max-ticks">
+      <value value="1000000"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="geno-ids-print-interval">
+      <value value="10000"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="dispersal-dd-evolver-start">
+      <value value="0"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="random-density-immunity">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="new-formula">
+      <value value="true"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="new-wander">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="wander-sex-radius">
+      <value value="1"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="evolve-dispersal-density-dependance">
+      <value value="true"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="perc-mm3">
+      <value value="1"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="t-homozygous-lethality">
+      <value value="1"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="evolution-rate-max">
+      <value value="1000"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="patch-fidelity">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="dispersal-dd-evolver">
+      <value value="1"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="shuffle-patches-timing">
+      <value value="1"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="new-dispersal">
+      <value value="true"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="more-mice-in-pest">
+      <value value="50"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="shuffle-patches">
+      <value value="true"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="new-density-dependent-dispersal">
+      <value value="true"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="dispersal-prob-t">
+      <value value="1"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="new_death_a">
+      <value value="3"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="P_full_set">
+      <value value="0.001"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="density-fecundity-strength">
+      <value value="1"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="min-matings">
+      <value value="0"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="fecundity-random">
+      <value value="0"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="max-turtles-total">
+      <value value="0"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="only-juvenile-dispersal">
+      <value value="true"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="new_death_c">
+      <value value="1"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="evolve-dispersal">
+      <value value="true"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="limit-perc-mm3-mice">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="fecundity-global">
+      <value value="6"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="dispersal-cost">
+      <value value="0.3"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="t-effect">
+      <value value="&quot;dominant&quot;"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="death-radius">
+      <value value="1"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="drive">
+      <value value="0.9"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="evolution-rate-min">
+      <value value="5"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="cc-mean">
+      <value value="50"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="d-formula-start">
+      <value value="0"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="end-with-t?">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="cc-sd">
+      <value value="15"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="t-w-reporting">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="max-matings">
+      <value value="3"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="dispersal-dd-evolver-3">
+      <value value="150"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="P_evo_decrease">
+      <value value="true"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="mortality-report">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="report-litters">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="when-to-disperse">
+      <value value="0"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="old-wander-extra-wander-chance">
+      <value value="0.5"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="interval-report-local-densities">
+      <value value="100"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="dispersal-prob-w">
+      <value value="1"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="extended-disadvantage-adaptation">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="patch-density-randomness">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="new-wander-chance">
+      <value value="15"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="matings-alpha">
+      <value value="0"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="pest-chance">
+      <value value="0"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="patch-density-max">
+      <value value="10"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="density-death">
+      <value value="true"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="approach-alpha">
+      <value value="0"/>
+      <value value="0.01"/>
+      <value value="0.02"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="mate-death-prob">
+      <value value="0"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="track-migration">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="mate-radius">
+      <value value="1"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="disp-wander-times">
+      <value value="5"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="new-death">
+      <value value="true"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="mating-prob">
+      <value value="1"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="starting-number">
+      <value value="5000"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="loci">
+      <value value="2"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="random-min-matings">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="new_death_b">
+      <value value="15"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="death-prob">
+      <value value="0.25"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="report-litters-ticks">
+      <value value="100"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="cluster-patch-densities">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="new_death_d">
+      <value value="5"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="density-fecundity">
+      <value value="true"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="dispersal-mod-evolver">
+      <value value="1"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="smart-report-geno">
+      <value value="true"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="patches-report">
+      <value value="true"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="file-location">
+      <value value="&quot;/moto/ziab/users/jr3950/data/ABM/3.7.2-2linloci-1M-InfertileMalesVarAlpha-LowerAlpha-SwitchTIntoSim-2/&quot;"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="patch-density-min">
+      <value value="1"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="density-death-prob">
+      <value value="10"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="P_full_exists">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="density-radius">
+      <value value="3"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="w-advantage">
+      <value value="0.85"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="report-migration-ticks">
+      <value value="100"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="pest-patch-lasting">
+      <value value="50"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="only_phenotypic_range">
+      <value value="true"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="density-evolver-max-turtles">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="dispersal-density-updated-after-each-dispersal">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="linear-formula-dispersal">
+      <value value="true"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="ticks-when-t-comes-in">
+      <value value="100000"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="negative-binomial-approach">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="cc-sd-incr">
+      <value value="15"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="incremental-shuffle">
+      <value value="true"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="kill_t_above">
+      <value value="1"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="start_with_mutation">
+      <value value="true"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="logit_disp_prob">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="d0-dividedby">
+      <value value="1000"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="d1-dividedby">
+      <value value="50000"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="P_inc_final">
+      <value value="0.001"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="P_inc_random">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="t-homozygous-fertile">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="ptclassic">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="update-males-after-every-female">
+      <value value="true"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="reverse-who-comes-in">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="switch-turtles">
+      <value value="true"/>
+    </enumeratedValueSet>
+  </experiment>
+  <experiment name="3.7.2-2linloci-1M-NatCond-Heterogeneity-LowerAlpha-SwitchTIntoSim-4" repetitions="10" sequentialRunOrder="false" runMetricsEveryStep="false">
+    <setup>setup</setup>
+    <go>go</go>
+    <metric>count-w</metric>
+    <metric>count-t</metric>
+    <metric>count-tt</metric>
+    <metric>count-w + count-t + count-tt</metric>
+    <enumeratedValueSet variable="min-pxcor">
+      <value value="-5"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="min-pycor">
+      <value value="-5"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="max-pxcor">
+      <value value="4"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="max-pycor">
+      <value value="4"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="matings-report">
+      <value value="true"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="do-report-local-densities">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="dispersal-dd-evolver-2">
+      <value value="5"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="P_inc_set">
+      <value value="1"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="report-geno">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="random-patch-density">
+      <value value="true"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="t-homozygous-viability">
+      <value value="0"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="evolution-report">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="dispersal-mod-evolver-start">
+      <value value="0.5"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="version">
+      <value value="3"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="t-starting-frequency">
+      <value value="1"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="evolve-dispersal-density-dependance-2">
+      <value value="true"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="max-ticks">
+      <value value="1000000"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="geno-ids-print-interval">
+      <value value="10000"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="dispersal-dd-evolver-start">
+      <value value="0"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="random-density-immunity">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="new-formula">
+      <value value="true"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="new-wander">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="wander-sex-radius">
+      <value value="1"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="evolve-dispersal-density-dependance">
+      <value value="true"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="perc-mm3">
+      <value value="1"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="t-homozygous-lethality">
+      <value value="1"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="evolution-rate-max">
+      <value value="1000"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="patch-fidelity">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="dispersal-dd-evolver">
+      <value value="1"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="shuffle-patches-timing">
+      <value value="1"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="new-dispersal">
+      <value value="true"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="more-mice-in-pest">
+      <value value="50"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="shuffle-patches">
+      <value value="true"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="new-density-dependent-dispersal">
+      <value value="true"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="dispersal-prob-t">
+      <value value="1"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="new_death_a">
+      <value value="3"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="P_full_set">
+      <value value="0.001"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="density-fecundity-strength">
+      <value value="1"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="min-matings">
+      <value value="0"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="fecundity-random">
+      <value value="0"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="max-turtles-total">
+      <value value="0"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="only-juvenile-dispersal">
+      <value value="true"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="new_death_c">
+      <value value="1"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="evolve-dispersal">
+      <value value="true"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="limit-perc-mm3-mice">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="fecundity-global">
+      <value value="6"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="dispersal-cost">
+      <value value="0.3"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="t-effect">
+      <value value="&quot;dominant&quot;"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="death-radius">
+      <value value="1"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="drive">
+      <value value="0.9"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="evolution-rate-min">
+      <value value="5"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="cc-mean">
+      <value value="50"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="d-formula-start">
+      <value value="0"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="end-with-t?">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="cc-sd">
+      <value value="10"/>
+      <value value="20"/>
+      <value value="25"/>
+      <value value="0"/>
+      <value value="5"/>
+      <value value="15"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="t-w-reporting">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="max-matings">
+      <value value="3"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="dispersal-dd-evolver-3">
+      <value value="150"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="P_evo_decrease">
+      <value value="true"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="mortality-report">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="report-litters">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="when-to-disperse">
+      <value value="0"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="old-wander-extra-wander-chance">
+      <value value="0.5"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="interval-report-local-densities">
+      <value value="100"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="dispersal-prob-w">
+      <value value="1"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="extended-disadvantage-adaptation">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="patch-density-randomness">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="new-wander-chance">
+      <value value="15"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="matings-alpha">
+      <value value="0"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="pest-chance">
+      <value value="0"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="patch-density-max">
+      <value value="10"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="density-death">
+      <value value="true"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="approach-alpha">
+      <value value="0.02"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="mate-death-prob">
+      <value value="0"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="track-migration">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="mate-radius">
+      <value value="1"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="disp-wander-times">
+      <value value="5"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="new-death">
+      <value value="true"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="mating-prob">
+      <value value="1"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="starting-number">
+      <value value="5000"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="loci">
+      <value value="2"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="random-min-matings">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="new_death_b">
+      <value value="15"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="death-prob">
+      <value value="0.25"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="report-litters-ticks">
+      <value value="100"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="cluster-patch-densities">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="new_death_d">
+      <value value="5"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="density-fecundity">
+      <value value="true"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="dispersal-mod-evolver">
+      <value value="1"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="smart-report-geno">
+      <value value="true"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="patches-report">
+      <value value="true"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="file-location">
+      <value value="&quot;/moto/ziab/users/jr3950/data/ABM/3.7.2-2linloci-1M-NatCond-Heterogeneity-LowerAlpha-SwitchTIntoSim-4/&quot;"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="patch-density-min">
+      <value value="1"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="density-death-prob">
+      <value value="10"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="P_full_exists">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="density-radius">
+      <value value="3"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="w-advantage">
+      <value value="0.85"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="report-migration-ticks">
+      <value value="100"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="pest-patch-lasting">
+      <value value="50"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="only_phenotypic_range">
+      <value value="true"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="density-evolver-max-turtles">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="dispersal-density-updated-after-each-dispersal">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="linear-formula-dispersal">
+      <value value="true"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="ticks-when-t-comes-in">
+      <value value="100000"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="negative-binomial-approach">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="cc-sd-incr">
+      <value value="10"/>
+      <value value="20"/>
+      <value value="25"/>
+      <value value="0"/>
+      <value value="5"/>
+      <value value="15"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="incremental-shuffle">
+      <value value="true"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="kill_t_above">
+      <value value="1"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="start_with_mutation">
+      <value value="true"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="logit_disp_prob">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="d0-dividedby">
+      <value value="1000"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="d1-dividedby">
+      <value value="50000"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="P_inc_final">
+      <value value="0.001"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="P_inc_random">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="t-homozygous-fertile">
+      <value value="true"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="ptclassic">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="update-males-after-every-female">
+      <value value="true"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="reverse-who-comes-in">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="switch-turtles">
+      <value value="true"/>
+    </enumeratedValueSet>
+  </experiment>
+  <experiment name="3.7.2-2linloci-1M-NatCond-Heterogeneity-LowerAlpha-SwitchTIntoSim-5" repetitions="10" sequentialRunOrder="false" runMetricsEveryStep="false">
+    <setup>setup</setup>
+    <go>go</go>
+    <metric>count-w</metric>
+    <metric>count-t</metric>
+    <metric>count-tt</metric>
+    <metric>count-w + count-t + count-tt</metric>
+    <enumeratedValueSet variable="min-pxcor">
+      <value value="-5"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="min-pycor">
+      <value value="-5"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="max-pxcor">
+      <value value="4"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="max-pycor">
+      <value value="4"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="matings-report">
+      <value value="true"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="do-report-local-densities">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="dispersal-dd-evolver-2">
+      <value value="5"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="P_inc_set">
+      <value value="1"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="report-geno">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="random-patch-density">
+      <value value="true"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="t-homozygous-viability">
+      <value value="0"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="evolution-report">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="dispersal-mod-evolver-start">
+      <value value="0.5"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="version">
+      <value value="3"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="t-starting-frequency">
+      <value value="1"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="evolve-dispersal-density-dependance-2">
+      <value value="true"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="max-ticks">
+      <value value="1000000"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="geno-ids-print-interval">
+      <value value="10000"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="dispersal-dd-evolver-start">
+      <value value="0"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="random-density-immunity">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="new-formula">
+      <value value="true"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="new-wander">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="wander-sex-radius">
+      <value value="1"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="evolve-dispersal-density-dependance">
+      <value value="true"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="perc-mm3">
+      <value value="1"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="t-homozygous-lethality">
+      <value value="1"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="evolution-rate-max">
+      <value value="1000"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="patch-fidelity">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="dispersal-dd-evolver">
+      <value value="1"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="shuffle-patches-timing">
+      <value value="1"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="new-dispersal">
+      <value value="true"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="more-mice-in-pest">
+      <value value="50"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="shuffle-patches">
+      <value value="true"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="new-density-dependent-dispersal">
+      <value value="true"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="dispersal-prob-t">
+      <value value="1"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="new_death_a">
+      <value value="3"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="P_full_set">
+      <value value="0.001"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="density-fecundity-strength">
+      <value value="1"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="min-matings">
+      <value value="0"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="fecundity-random">
+      <value value="0"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="max-turtles-total">
+      <value value="0"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="only-juvenile-dispersal">
+      <value value="true"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="new_death_c">
+      <value value="1"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="evolve-dispersal">
+      <value value="true"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="limit-perc-mm3-mice">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="fecundity-global">
+      <value value="6"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="dispersal-cost">
+      <value value="0.3"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="t-effect">
+      <value value="&quot;dominant&quot;"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="death-radius">
+      <value value="1"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="drive">
+      <value value="0.9"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="evolution-rate-min">
+      <value value="5"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="cc-mean">
+      <value value="50"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="d-formula-start">
+      <value value="0"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="end-with-t?">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="cc-sd">
+      <value value="10"/>
+      <value value="20"/>
+      <value value="25"/>
+      <value value="0"/>
+      <value value="5"/>
+      <value value="15"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="t-w-reporting">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="max-matings">
+      <value value="3"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="dispersal-dd-evolver-3">
+      <value value="150"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="P_evo_decrease">
+      <value value="true"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="mortality-report">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="report-litters">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="when-to-disperse">
+      <value value="0"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="old-wander-extra-wander-chance">
+      <value value="0.5"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="interval-report-local-densities">
+      <value value="100"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="dispersal-prob-w">
+      <value value="1"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="extended-disadvantage-adaptation">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="patch-density-randomness">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="new-wander-chance">
+      <value value="15"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="matings-alpha">
+      <value value="0"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="pest-chance">
+      <value value="0"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="patch-density-max">
+      <value value="10"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="density-death">
+      <value value="true"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="approach-alpha">
+      <value value="0.02"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="mate-death-prob">
+      <value value="0"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="track-migration">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="mate-radius">
+      <value value="1"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="disp-wander-times">
+      <value value="5"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="new-death">
+      <value value="true"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="mating-prob">
+      <value value="1"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="starting-number">
+      <value value="5000"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="loci">
+      <value value="2"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="random-min-matings">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="new_death_b">
+      <value value="15"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="death-prob">
+      <value value="0.25"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="report-litters-ticks">
+      <value value="100"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="cluster-patch-densities">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="new_death_d">
+      <value value="5"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="density-fecundity">
+      <value value="true"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="dispersal-mod-evolver">
+      <value value="1"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="smart-report-geno">
+      <value value="true"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="patches-report">
+      <value value="true"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="file-location">
+      <value value="&quot;/moto/ziab/users/jr3950/data/ABM/3.7.2-2linloci-1M-NatCond-Heterogeneity-LowerAlpha-SwitchTIntoSim-5/&quot;"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="patch-density-min">
+      <value value="1"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="density-death-prob">
+      <value value="10"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="P_full_exists">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="density-radius">
+      <value value="3"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="w-advantage">
+      <value value="0.85"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="report-migration-ticks">
+      <value value="100"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="pest-patch-lasting">
+      <value value="50"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="only_phenotypic_range">
+      <value value="true"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="density-evolver-max-turtles">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="dispersal-density-updated-after-each-dispersal">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="linear-formula-dispersal">
+      <value value="true"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="ticks-when-t-comes-in">
+      <value value="100000"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="negative-binomial-approach">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="cc-sd-incr">
+      <value value="10"/>
+      <value value="20"/>
+      <value value="25"/>
+      <value value="0"/>
+      <value value="5"/>
+      <value value="15"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="incremental-shuffle">
+      <value value="true"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="kill_t_above">
+      <value value="1"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="start_with_mutation">
+      <value value="true"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="logit_disp_prob">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="d0-dividedby">
+      <value value="1000"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="d1-dividedby">
+      <value value="50000"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="P_inc_final">
+      <value value="0.001"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="P_inc_random">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="t-homozygous-fertile">
+      <value value="true"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="ptclassic">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="update-males-after-every-female">
+      <value value="true"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="reverse-who-comes-in">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="switch-turtles">
+      <value value="true"/>
+    </enumeratedValueSet>
+  </experiment>
+  <experiment name="3.7.2-2linloci-1M-NatCond-Heterogeneity-LowerAlpha-SwitchTIntoSim-6" repetitions="10" sequentialRunOrder="false" runMetricsEveryStep="false">
+    <setup>setup</setup>
+    <go>go</go>
+    <metric>count-w</metric>
+    <metric>count-t</metric>
+    <metric>count-tt</metric>
+    <metric>count-w + count-t + count-tt</metric>
+    <enumeratedValueSet variable="min-pxcor">
+      <value value="-5"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="min-pycor">
+      <value value="-5"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="max-pxcor">
+      <value value="4"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="max-pycor">
+      <value value="4"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="matings-report">
+      <value value="true"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="do-report-local-densities">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="dispersal-dd-evolver-2">
+      <value value="5"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="P_inc_set">
+      <value value="1"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="report-geno">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="random-patch-density">
+      <value value="true"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="t-homozygous-viability">
+      <value value="0"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="evolution-report">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="dispersal-mod-evolver-start">
+      <value value="0.5"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="version">
+      <value value="3"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="t-starting-frequency">
+      <value value="1"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="evolve-dispersal-density-dependance-2">
+      <value value="true"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="max-ticks">
+      <value value="1000000"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="geno-ids-print-interval">
+      <value value="10000"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="dispersal-dd-evolver-start">
+      <value value="0"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="random-density-immunity">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="new-formula">
+      <value value="true"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="new-wander">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="wander-sex-radius">
+      <value value="1"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="evolve-dispersal-density-dependance">
+      <value value="true"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="perc-mm3">
+      <value value="1"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="t-homozygous-lethality">
+      <value value="1"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="evolution-rate-max">
+      <value value="1000"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="patch-fidelity">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="dispersal-dd-evolver">
+      <value value="1"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="shuffle-patches-timing">
+      <value value="1"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="new-dispersal">
+      <value value="true"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="more-mice-in-pest">
+      <value value="50"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="shuffle-patches">
+      <value value="true"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="new-density-dependent-dispersal">
+      <value value="true"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="dispersal-prob-t">
+      <value value="1"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="new_death_a">
+      <value value="3"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="P_full_set">
+      <value value="0.001"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="density-fecundity-strength">
+      <value value="1"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="min-matings">
+      <value value="0"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="fecundity-random">
+      <value value="0"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="max-turtles-total">
+      <value value="0"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="only-juvenile-dispersal">
+      <value value="true"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="new_death_c">
+      <value value="1"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="evolve-dispersal">
+      <value value="true"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="limit-perc-mm3-mice">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="fecundity-global">
+      <value value="6"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="dispersal-cost">
+      <value value="0.3"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="t-effect">
+      <value value="&quot;dominant&quot;"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="death-radius">
+      <value value="1"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="drive">
+      <value value="0.9"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="evolution-rate-min">
+      <value value="5"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="cc-mean">
+      <value value="50"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="d-formula-start">
+      <value value="0"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="end-with-t?">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="cc-sd">
+      <value value="10"/>
+      <value value="20"/>
+      <value value="25"/>
+      <value value="0"/>
+      <value value="5"/>
+      <value value="15"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="t-w-reporting">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="max-matings">
+      <value value="3"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="dispersal-dd-evolver-3">
+      <value value="150"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="P_evo_decrease">
+      <value value="true"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="mortality-report">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="report-litters">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="when-to-disperse">
+      <value value="0"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="old-wander-extra-wander-chance">
+      <value value="0.5"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="interval-report-local-densities">
+      <value value="100"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="dispersal-prob-w">
+      <value value="1"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="extended-disadvantage-adaptation">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="patch-density-randomness">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="new-wander-chance">
+      <value value="15"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="matings-alpha">
+      <value value="0"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="pest-chance">
+      <value value="0"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="patch-density-max">
+      <value value="10"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="density-death">
+      <value value="true"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="approach-alpha">
+      <value value="0.02"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="mate-death-prob">
+      <value value="0"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="track-migration">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="mate-radius">
+      <value value="1"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="disp-wander-times">
+      <value value="5"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="new-death">
+      <value value="true"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="mating-prob">
+      <value value="1"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="starting-number">
+      <value value="5000"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="loci">
+      <value value="2"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="random-min-matings">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="new_death_b">
+      <value value="15"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="death-prob">
+      <value value="0.25"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="report-litters-ticks">
+      <value value="100"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="cluster-patch-densities">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="new_death_d">
+      <value value="5"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="density-fecundity">
+      <value value="true"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="dispersal-mod-evolver">
+      <value value="1"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="smart-report-geno">
+      <value value="true"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="patches-report">
+      <value value="true"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="file-location">
+      <value value="&quot;/moto/ziab/users/jr3950/data/ABM/3.7.2-2linloci-1M-NatCond-Heterogeneity-LowerAlpha-SwitchTIntoSim-6/&quot;"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="patch-density-min">
+      <value value="1"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="density-death-prob">
+      <value value="10"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="P_full_exists">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="density-radius">
+      <value value="3"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="w-advantage">
+      <value value="0.85"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="report-migration-ticks">
+      <value value="100"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="pest-patch-lasting">
+      <value value="50"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="only_phenotypic_range">
+      <value value="true"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="density-evolver-max-turtles">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="dispersal-density-updated-after-each-dispersal">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="linear-formula-dispersal">
+      <value value="true"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="ticks-when-t-comes-in">
+      <value value="100000"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="negative-binomial-approach">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="cc-sd-incr">
+      <value value="10"/>
+      <value value="20"/>
+      <value value="25"/>
+      <value value="0"/>
+      <value value="5"/>
+      <value value="15"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="incremental-shuffle">
+      <value value="true"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="kill_t_above">
+      <value value="1"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="start_with_mutation">
+      <value value="true"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="logit_disp_prob">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="d0-dividedby">
+      <value value="1000"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="d1-dividedby">
+      <value value="50000"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="P_inc_final">
+      <value value="0.001"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="P_inc_random">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="t-homozygous-fertile">
+      <value value="true"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="ptclassic">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="update-males-after-every-female">
+      <value value="true"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="reverse-who-comes-in">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="switch-turtles">
+      <value value="true"/>
+    </enumeratedValueSet>
+  </experiment>
+  <experiment name="3.7.0-1linloci-100K-VarTauVarAlpha-FreqExp-LowerAlpha-2-372comp" repetitions="100" sequentialRunOrder="false" runMetricsEveryStep="false">
+    <setup>setup</setup>
+    <go>go</go>
+    <metric>count-w</metric>
+    <metric>count-t</metric>
+    <metric>count-tt</metric>
+    <metric>count-w + count-t + count-tt</metric>
+    <enumeratedValueSet variable="min-pxcor">
+      <value value="-5"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="min-pycor">
+      <value value="-5"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="max-pxcor">
+      <value value="4"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="max-pycor">
+      <value value="4"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="matings-report">
+      <value value="true"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="do-report-local-densities">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="dispersal-dd-evolver-2">
+      <value value="5"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="P_inc_set">
+      <value value="-1"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="report-geno">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="random-patch-density">
+      <value value="true"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="t-homozygous-viability">
+      <value value="1"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="evolution-report">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="dispersal-mod-evolver-start">
+      <value value="0.1"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="version">
+      <value value="3"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="t-starting-frequency">
+      <value value="1"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="evolve-dispersal-density-dependance-2">
+      <value value="true"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="max-ticks">
+      <value value="10000"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="geno-ids-print-interval">
+      <value value="1000"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="dispersal-dd-evolver-start">
+      <value value="0"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="random-density-immunity">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="new-formula">
+      <value value="true"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="new-wander">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="wander-sex-radius">
+      <value value="1"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="evolve-dispersal-density-dependance">
+      <value value="true"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="perc-mm3">
+      <value value="1"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="t-homozygous-lethality">
+      <value value="1"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="evolution-rate-max">
+      <value value="1000"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="patch-fidelity">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="dispersal-dd-evolver">
+      <value value="1"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="shuffle-patches-timing">
+      <value value="1"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="new-dispersal">
+      <value value="true"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="more-mice-in-pest">
+      <value value="50"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="shuffle-patches">
+      <value value="true"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="new-density-dependent-dispersal">
+      <value value="true"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="dispersal-prob-t">
+      <value value="1"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="new_death_a">
+      <value value="3"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="P_full_set">
+      <value value="0.001"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="density-fecundity-strength">
+      <value value="1"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="min-matings">
+      <value value="0"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="fecundity-random">
+      <value value="0"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="max-turtles-total">
+      <value value="0"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="only-juvenile-dispersal">
+      <value value="true"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="new_death_c">
+      <value value="1"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="evolve-dispersal">
+      <value value="true"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="limit-perc-mm3-mice">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="fecundity-global">
+      <value value="6"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="dispersal-cost">
+      <value value="0.3"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="t-effect">
+      <value value="&quot;dominant&quot;"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="death-radius">
+      <value value="1"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="drive">
+      <value value="0.9"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="evolution-rate-min">
+      <value value="5"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="cc-mean">
+      <value value="50"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="d-formula-start">
+      <value value="0"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="end-with-t?">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="cc-sd">
+      <value value="15"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="t-w-reporting">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="max-matings">
+      <value value="3"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="dispersal-dd-evolver-3">
+      <value value="150"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="P_evo_decrease">
+      <value value="true"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="mortality-report">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="report-litters">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="when-to-disperse">
+      <value value="0"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="old-wander-extra-wander-chance">
+      <value value="0.5"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="interval-report-local-densities">
+      <value value="100"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="dispersal-prob-w">
+      <value value="1"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="extended-disadvantage-adaptation">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="patch-density-randomness">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="new-wander-chance">
+      <value value="15"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="matings-alpha">
+      <value value="0"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="pest-chance">
+      <value value="0"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="patch-density-max">
+      <value value="10"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="density-death">
+      <value value="true"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="approach-alpha">
+      <value value="0"/>
+      <value value="0.01"/>
+      <value value="0.02"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="mate-death-prob">
+      <value value="0"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="track-migration">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="mate-radius">
+      <value value="1"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="disp-wander-times">
+      <value value="5"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="new-death">
+      <value value="true"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="mating-prob">
+      <value value="1"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="starting-number">
+      <value value="5000"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="loci">
+      <value value="1"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="random-min-matings">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="new_death_b">
+      <value value="15"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="death-prob">
+      <value value="0.25"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="report-litters-ticks">
+      <value value="100"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="cluster-patch-densities">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="new_death_d">
+      <value value="5"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="density-fecundity">
+      <value value="true"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="dispersal-mod-evolver">
+      <value value="1"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="smart-report-geno">
+      <value value="true"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="patches-report">
+      <value value="true"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="file-location">
+      <value value="&quot;/moto/ziab/users/jr3950/data/ABM/3.7.0-1linloci-100K-VarTauVarAlpha-FreqExp-LowerAlpha-2-372comp/&quot;"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="patch-density-min">
+      <value value="1"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="density-death-prob">
+      <value value="10"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="P_full_exists">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="density-radius">
+      <value value="3"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="w-advantage">
+      <value value="0.85"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="report-migration-ticks">
+      <value value="100"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="pest-patch-lasting">
+      <value value="50"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="only_phenotypic_range">
+      <value value="true"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="density-evolver-max-turtles">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="dispersal-density-updated-after-each-dispersal">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="linear-formula-dispersal">
+      <value value="true"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="ticks-when-t-comes-in">
+      <value value="10"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="negative-binomial-approach">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="cc-sd-incr">
+      <value value="15"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="incremental-shuffle">
+      <value value="true"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="kill_t_above">
+      <value value="1"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="start_with_mutation">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="logit_disp_prob">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="d0-dividedby">
+      <value value="1000"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="d1-dividedby">
+      <value value="50000"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="P_inc_final">
+      <value value="-1"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="P_inc_random">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="t-homozygous-fertile">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="ptclassic">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="update-males-after-every-female">
+      <value value="true"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="reverse-who-comes-in">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="switch-turtles">
+      <value value="false"/>
+    </enumeratedValueSet>
+  </experiment>
+  <experiment name="3.7.2-2linloci-1M-NatCond-Heterogeneity-LowerAlpha-SwitchTIntoSim-7" repetitions="30" sequentialRunOrder="false" runMetricsEveryStep="false">
+    <setup>setup</setup>
+    <go>go</go>
+    <metric>count-w</metric>
+    <metric>count-t</metric>
+    <metric>count-tt</metric>
+    <metric>count-w + count-t + count-tt</metric>
+    <enumeratedValueSet variable="min-pxcor">
+      <value value="-5"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="min-pycor">
+      <value value="-5"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="max-pxcor">
+      <value value="4"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="max-pycor">
+      <value value="4"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="matings-report">
+      <value value="true"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="do-report-local-densities">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="dispersal-dd-evolver-2">
+      <value value="5"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="P_inc_set">
+      <value value="1"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="report-geno">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="random-patch-density">
+      <value value="true"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="t-homozygous-viability">
+      <value value="0"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="evolution-report">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="dispersal-mod-evolver-start">
+      <value value="0.5"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="version">
+      <value value="3"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="t-starting-frequency">
+      <value value="1"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="evolve-dispersal-density-dependance-2">
+      <value value="true"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="max-ticks">
+      <value value="1000000"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="geno-ids-print-interval">
+      <value value="10000"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="dispersal-dd-evolver-start">
+      <value value="0"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="random-density-immunity">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="new-formula">
+      <value value="true"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="new-wander">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="wander-sex-radius">
+      <value value="1"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="evolve-dispersal-density-dependance">
+      <value value="true"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="perc-mm3">
+      <value value="1"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="t-homozygous-lethality">
+      <value value="1"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="evolution-rate-max">
+      <value value="1000"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="patch-fidelity">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="dispersal-dd-evolver">
+      <value value="1"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="shuffle-patches-timing">
+      <value value="1"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="new-dispersal">
+      <value value="true"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="more-mice-in-pest">
+      <value value="50"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="shuffle-patches">
+      <value value="true"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="new-density-dependent-dispersal">
+      <value value="true"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="dispersal-prob-t">
+      <value value="1"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="new_death_a">
+      <value value="3"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="P_full_set">
+      <value value="0.001"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="density-fecundity-strength">
+      <value value="1"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="min-matings">
+      <value value="0"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="fecundity-random">
+      <value value="0"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="max-turtles-total">
+      <value value="0"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="only-juvenile-dispersal">
+      <value value="true"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="new_death_c">
+      <value value="1"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="evolve-dispersal">
+      <value value="true"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="limit-perc-mm3-mice">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="fecundity-global">
+      <value value="6"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="dispersal-cost">
+      <value value="0.3"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="t-effect">
+      <value value="&quot;dominant&quot;"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="death-radius">
+      <value value="1"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="drive">
+      <value value="0.9"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="evolution-rate-min">
+      <value value="5"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="cc-mean">
+      <value value="50"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="d-formula-start">
+      <value value="0"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="end-with-t?">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="cc-sd">
+      <value value="20"/>
+      <value value="25"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="t-w-reporting">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="max-matings">
+      <value value="3"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="dispersal-dd-evolver-3">
+      <value value="150"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="P_evo_decrease">
+      <value value="true"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="mortality-report">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="report-litters">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="when-to-disperse">
+      <value value="0"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="old-wander-extra-wander-chance">
+      <value value="0.5"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="interval-report-local-densities">
+      <value value="100"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="dispersal-prob-w">
+      <value value="1"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="extended-disadvantage-adaptation">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="patch-density-randomness">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="new-wander-chance">
+      <value value="15"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="matings-alpha">
+      <value value="0"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="pest-chance">
+      <value value="0"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="patch-density-max">
+      <value value="10"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="density-death">
+      <value value="true"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="approach-alpha">
+      <value value="0.02"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="mate-death-prob">
+      <value value="0"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="track-migration">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="mate-radius">
+      <value value="1"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="disp-wander-times">
+      <value value="5"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="new-death">
+      <value value="true"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="mating-prob">
+      <value value="1"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="starting-number">
+      <value value="5000"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="loci">
+      <value value="2"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="random-min-matings">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="new_death_b">
+      <value value="15"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="death-prob">
+      <value value="0.25"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="report-litters-ticks">
+      <value value="100"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="cluster-patch-densities">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="new_death_d">
+      <value value="5"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="density-fecundity">
+      <value value="true"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="dispersal-mod-evolver">
+      <value value="1"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="smart-report-geno">
+      <value value="true"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="patches-report">
+      <value value="true"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="file-location">
+      <value value="&quot;/moto/ziab/users/jr3950/data/ABM/3.7.2-2linloci-1M-NatCond-Heterogeneity-LowerAlpha-SwitchTIntoSim-7/&quot;"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="patch-density-min">
+      <value value="1"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="density-death-prob">
+      <value value="10"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="P_full_exists">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="density-radius">
+      <value value="3"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="w-advantage">
+      <value value="0.85"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="report-migration-ticks">
+      <value value="100"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="pest-patch-lasting">
+      <value value="50"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="only_phenotypic_range">
+      <value value="true"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="density-evolver-max-turtles">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="dispersal-density-updated-after-each-dispersal">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="linear-formula-dispersal">
+      <value value="true"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="ticks-when-t-comes-in">
+      <value value="100000"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="negative-binomial-approach">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="cc-sd-incr">
+      <value value="5"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="incremental-shuffle">
+      <value value="true"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="kill_t_above">
+      <value value="1"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="start_with_mutation">
+      <value value="true"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="logit_disp_prob">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="d0-dividedby">
+      <value value="1000"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="d1-dividedby">
+      <value value="50000"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="P_inc_final">
+      <value value="0.001"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="P_inc_random">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="t-homozygous-fertile">
+      <value value="true"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="ptclassic">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="update-males-after-every-female">
+      <value value="true"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="reverse-who-comes-in">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="switch-turtles">
+      <value value="true"/>
     </enumeratedValueSet>
   </experiment>
 </experiments>

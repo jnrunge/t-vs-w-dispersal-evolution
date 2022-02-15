@@ -3837,8 +3837,8 @@ false
 "" ""
 PENS
 "default" 1.0 0 -955883 true "" "plot ((median [t-dispersal-density-threshold] of turtles with [t-status = 1]))"
-"pen-1" 1.0 0 -7500403 true "" "plot ((median [w-dispersal-density-threshold] of turtles with [t-status = 0] + mean [w2-dispersal-density-threshold] of turtles with [t-status = 0]) / 2)"
-"pen-2" 1.0 0 -2674135 true "" "plot ((median [t-dispersal-density-threshold] of turtles with [t-status = 2] + mean [t2-dispersal-density-threshold] of turtles with [t-status = 2]) / 2)"
+"pen-1" 1.0 0 -7500403 true "" "plot ((median [w-dispersal-density-threshold] of turtles with [t-status = 0] + median [w2-dispersal-density-threshold] of turtles with [t-status = 0]) / 2)"
+"pen-2" 1.0 0 -2674135 true "" "plot ((median [t-dispersal-density-threshold] of turtles with [t-status = 2] + median [t2-dispersal-density-threshold] of turtles with [t-status = 2]) / 2)"
 "pen-4" 1.0 0 -16777216 true "" "plot 0"
 
 PLOT
@@ -3857,9 +3857,9 @@ true
 false
 "" ""
 PENS
-"default" 1.0 0 -9276814 true "" "plot ((median [w-dispersal-modifier] of turtles with [t-status = 0] + mean [w2-dispersal-modifier] of turtles with [t-status = 0]) / 2)"
+"default" 1.0 0 -9276814 true "" "plot ((median [w-dispersal-modifier] of turtles with [t-status = 0] + median [w2-dispersal-modifier] of turtles with [t-status = 0]) / 2)"
 "pen-1" 1.0 0 -955883 true "" "plot (median [t-dispersal-modifier] of turtles with [t-status = 1])"
-"pen-2" 1.0 0 -2674135 true "" "plot ((median [t-dispersal-modifier] of turtles with [t-status = 2] + mean [t2-dispersal-modifier] of turtles with [t-status = 2]) / 2)"
+"pen-2" 1.0 0 -2674135 true "" "plot ((median [t-dispersal-modifier] of turtles with [t-status = 2] + median [t2-dispersal-modifier] of turtles with [t-status = 2]) / 2)"
 
 MONITOR
 152

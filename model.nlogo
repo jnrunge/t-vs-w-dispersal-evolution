@@ -731,7 +731,10 @@ ifelse (evolve-dispersal = true) ; true in Runge et al.
     if t-effect = "additive" and t-status = 1
       [
         set t-disp-mod (t-dispersal-modifier + w-dispersal-modifier) / 2 ;a
-        set t-disp-dens-t (t-dispersal-density-threshold + w-dispersal-density-threshold) / 2 ;b
+        if loci = 2
+        [
+          set t-disp-dens-t (t-dispersal-density-threshold + w-dispersal-density-threshold) / 2 ;b
+        ]
 
       ]
 
@@ -739,7 +742,10 @@ ifelse (evolve-dispersal = true) ; true in Runge et al.
     if t-status = 2
       [
         set t-disp-mod (t-dispersal-modifier + t2-dispersal-modifier) / 2
+        if loci = 2
+        [
         set t-disp-dens-t (t-dispersal-density-threshold + t2-dispersal-density-threshold) / 2
+        ]
 
         if t-effect = "dominant"
         [

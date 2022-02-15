@@ -3442,7 +3442,7 @@ to-report mean-genotype-value [genotype]
     let w-turtles turtles with [t-status = 0]
     if count w-turtles > 0
     [
-      report ((mean [w-dispersal-modifier] of w-turtles) + (mean [w2-dispersal-modifier] of w-turtles) / 2)
+      report ((mean [w-dispersal-modifier] of w-turtles) + (mean [w2-dispersal-modifier] of w-turtles)) / 2
     ]
   ]
   if genotype = "t"
@@ -3585,7 +3585,7 @@ t-starting-frequency
 t-starting-frequency
 1
 100
-100.0
+1.0
 1
 1
 NIL
@@ -3843,8 +3843,8 @@ NIL
 NIL
 0.0
 1.0
-0.5
-0.5
+0.0
+1.0
 true
 false
 "" ""
@@ -4003,7 +4003,7 @@ t-homozygous-viability
 t-homozygous-viability
 0
 1.0
-1.0
+0.0
 0.01
 1
 NIL
@@ -4070,7 +4070,7 @@ SWITCH
 1917
 P_full_exists
 P_full_exists
-1
+0
 1
 -1000
 
@@ -4113,7 +4113,7 @@ INPUTBOX
 215
 1762
 ticks-when-t-comes-in
-0.0
+1000.0
 1
 0
 Number
@@ -4147,7 +4147,7 @@ SWITCH
 1795
 start_with_mutation
 start_with_mutation
-1
+0
 1
 -1000
 

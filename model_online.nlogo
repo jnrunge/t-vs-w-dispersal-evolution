@@ -3424,13 +3424,13 @@ if t-status = 2
 ]
 end
 
-to-report median-genotype-value [genotype]
+to-report mean-genotype-value [genotype]
   if genotype = "w"
   [
     let w-turtles turtles with [t-status = 0]
     if count w-turtles > 0
     [
-      report ((median [w-dispersal-modifier] of w-turtles) + (median [w2-dispersal-modifier] of w-turtles) / 2)
+      report ((mean [w-dispersal-modifier] of w-turtles) + (mean [w2-dispersal-modifier] of w-turtles) / 2)
     ]
   ]
   if genotype = "t"
@@ -3438,7 +3438,7 @@ to-report median-genotype-value [genotype]
     let t-turtles turtles with [t-status > 0]
     if count t-turtles > 0
     [
-      report median ([t-dispersal-modifier] of t-turtles)
+      report mean ([t-dispersal-modifier] of t-turtles)
     ]
   ]
   report 0
@@ -3826,7 +3826,7 @@ PLOT
 273
 422
 439
-Dispersal propensity over time (median)
+Dispersal propensity over time (mean)
 NIL
 NIL
 0.0
@@ -3837,8 +3837,8 @@ true
 false
 "" ""
 PENS
-"default" 1.0 0 -9276814 true "" "plot median-genotype-value \"w\""
-"pen-1" 1.0 0 -955883 true "" "plot median-genotype-value \"t\""
+"default" 1.0 0 -9276814 true "" "plot mean-genotype-value \"w\""
+"pen-1" 1.0 0 -955883 true "" "plot mean-genotype-value \"t\""
 
 MONITOR
 150

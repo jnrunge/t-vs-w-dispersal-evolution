@@ -3459,11 +3459,11 @@ end
 GRAPHICS-WINDOW
 434
 10
-607
-184
+604
+181
 -1
 -1
-33.0
+54.0
 1
 10
 1
@@ -3473,10 +3473,10 @@ GRAPHICS-WINDOW
 0
 0
 1
--2
-2
--2
-2
+-1
+1
+-1
+1
 1
 1
 1
@@ -3499,6 +3499,16 @@ NIL
 NIL
 NIL
 0
+
+TEXTBOX
+447
+292
+657
+356
+Chance of an female-approaching male mating with the female (after the first approacher, which has always 100% chance), influences polyandry
+11
+0.0
+1
 
 BUTTON
 13
@@ -3618,10 +3628,10 @@ end-with-t?
 -1000
 
 SLIDER
-445
-435
-620
-468
+444
+459
+619
+492
 drive
 drive
 0.5
@@ -3995,10 +4005,10 @@ PENS
 "pen-1" 0.1 1 -7500403 true "" "histogram [w-dispersal-modifier] of turtles with [t-status = 0]\nset-histogram-num-bars 100"
 
 SLIDER
-445
-493
-618
-526
+444
+517
+617
+550
 t-homozygous-viability
 t-homozygous-viability
 0
@@ -4185,10 +4195,10 @@ P_inc_final
 Number
 
 SWITCH
-445
-565
-616
-598
+444
+589
+615
+622
 t-homozygous-fertile
 t-homozygous-fertile
 0
@@ -4237,10 +4247,10 @@ Main variables
 1
 
 SLIDER
-444
-356
-617
-389
+448
+359
+621
+392
 approach-alpha
 approach-alpha
 0
@@ -4261,16 +4271,6 @@ Patches\nwhite: = empty\ngrey = only wildtype\nmore orange = higher t frequency
 0.0
 1
 
-TEXTBOX
-447
-292
-670
-390
-Chance of an female-approaching male mating with the female (after the first approacher, which has always 100% chance), influences polyandry
-11
-0.0
-1
-
 SWITCH
 50
 2018
@@ -4283,30 +4283,30 @@ keep-going-after-max-ticks
 -1000
 
 TEXTBOX
-446
-402
-639
-444
+445
+426
+638
+468
 Chance of t sperm transmitted vs + sperm from +/t male.
 11
 0.0
 1
 
 TEXTBOX
-446
-477
-612
-505
+445
+501
+611
+529
 Fraction of t/t embryos viable
 11
 0.0
 1
 
 TEXTBOX
-447
-545
-653
-573
+446
+569
+652
+597
 Can t/t males produce fertile sperm?
 11
 0.0

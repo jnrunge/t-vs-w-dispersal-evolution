@@ -3595,10 +3595,10 @@ NIL
 HORIZONTAL
 
 SWITCH
-1220
-1942
-1339
-1975
+461
+2674
+580
+2707
 end-with-t?
 end-with-t?
 0
@@ -3669,10 +3669,10 @@ mean-matings
 11
 
 SWITCH
-1220
-1858
-1392
-1891
+461
+2591
+633
+2624
 evolve-dispersal
 evolve-dispersal
 0
@@ -3852,10 +3852,10 @@ count turtles with [t-status = 2]
 11
 
 SWITCH
-1222
-1898
-1533
-1931
+464
+2631
+775
+2664
 extended-disadvantage-adaptation
 extended-disadvantage-adaptation
 1
@@ -3921,10 +3921,10 @@ t-effect
 1
 
 TEXTBOX
-766
-1774
-1191
-2077
+7
+2507
+432
+2810
 Right of here are alternative and outdated/unsupported options.\n\nIf default setting is on, then off is currently unintended and vice versa. Same goes for changing values.
 30
 15.0
@@ -3942,10 +3942,10 @@ cc-mean
 Number
 
 SWITCH
-1222
-1818
-1463
-1851
+464
+2551
+705
+2584
 new-density-dependent-dispersal
 new-density-dependent-dispersal
 0
@@ -4085,10 +4085,10 @@ only_phenotypic_range
 -1000
 
 SWITCH
-1222
-1984
-1616
-2017
+464
+2717
+858
+2750
 dispersal-density-updated-after-each-dispersal
 dispersal-density-updated-after-each-dispersal
 1

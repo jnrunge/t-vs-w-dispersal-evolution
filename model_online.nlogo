@@ -497,6 +497,9 @@ to go ; one turn = one run of this function "go"
         [
           ;set P_inc P_inc_set / (1 + ((ticks - ticks-when-t-comes-in) * (1 / ((max-ticks - ticks-when-t-comes-in) / 50))))
           set P_inc P_inc_set - ((ticks - ticks-when-t-comes-in) * (((P_inc_set - P_inc_final) / (max-ticks - ticks-when-t-comes-in))))
+          if ticks > max-ticks[
+            set P_inc P_inc_final
+          ]
         ]
         [
           ;set P_inc P_inc_set / (1 + ((ticks) * (1 / ((ticks-when-t-comes-in) / 50))))
@@ -505,6 +508,9 @@ to go ; one turn = one run of this function "go"
       ]
       [
         set P_inc P_inc_set - ((ticks) * ((P_inc_set - P_inc_final) / (max-ticks)))
+        if ticks > max-ticks[
+            set P_inc P_inc_final
+          ]
       ]
 
       ifelse (P_full_exists = true)
@@ -3607,7 +3613,7 @@ SWITCH
 2707
 end-with-t?
 end-with-t?
-0
+1
 1
 -1000
 
@@ -3997,7 +4003,7 @@ t-homozygous-viability
 t-homozygous-viability
 0
 1.0
-0.61
+1.0
 0.01
 1
 NIL

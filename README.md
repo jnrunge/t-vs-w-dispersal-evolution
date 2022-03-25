@@ -2,7 +2,7 @@
 
 LICENSE: CC BY-NC 4.0 https://creativecommons.org/licenses/by-nc/4.0/
 
-This repository hosts the raw simulation code, written for NetLogo 6.1.1, of the publication "Selfish migrants: How a meiotic driver is selected to increase dispersal" by Jan-Niklas Runge, Hanna Kokko, and Anna K. Lindholm ([bioRxiv](https://www.biorxiv.org/content/10.1101/2021.02.01.429134v3.full)). It generated data that was analyzed and can be found at [Zenodo](https://zenodo.org/record/4486286). A simplified online version can be played with on my [homepage](https://janniklasrunge.de/model.html).
+This repository hosts the raw simulation code, written for NetLogo 6.1.1, of the publication "Selfish migrants: How a meiotic driver is selected to increase dispersal" by Jan-Niklas Runge, Hanna Kokko, and Anna K. Lindholm ([Journal of Evolutionary Biology](https://doi.org/10.1111/jeb.13989)). It generated data that was analyzed and can be found at [Zenodo](https://zenodo.org/record/4486286). A simplified online version can be played with on my [homepage](https://janniklasrunge.de/model.html).
 
 model.nlogo is the main file, model_online.nlogo is just a derivative with some interface and default value adjustments for browser usage.
 
